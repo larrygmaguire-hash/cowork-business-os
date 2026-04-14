@@ -230,6 +230,56 @@ bash Infrastructure/Scripts/prima/validate-state.sh
 
 If validation fails, alert the user and offer to restore from the backup.
 
+## Part 7a: Redeploy changed skills
+
+Cowork reads skills from `~/.claude/skills/`, not from the workspace. If this upgrade changed any files under `.claude/skills/`, those changes exist in the workspace but not in Cowork's active skills registry.
+
+Determine which skills changed in the upgrade (from the plan in Part 4). If none, skip this part.
+
+If any skills changed, present:
+
+```
+The upgrade modified the following skills:
+[list changed skills]
+
+To make these changes take effect in Cowork, they need to be redeployed to
+`~/.claude/skills/`. Three options:
+
+**Option A — I redeploy them for you (recommended).**
+I open Finder, navigate to both folders, and copy the changed skill folders
+across. You watch, approve.
+
+**Option B — You redeploy in Finder.**
+Open Finder, navigate to `~/.claude/skills/`, open a second window at this
+workspace's `.claude/skills/`, and drag the changed skill folders across,
+overwriting when prompted.
+
+**Option C — You redeploy in Terminal.**
+Run this command (replace the path with your workspace path):
+
+    cp -R [workspace-path]/.claude/skills/* ~/.claude/skills/
+
+Which option? (A / B / C)
+```
+
+If Option A, drive Finder via computer-use. If Options B or C, wait for the user to confirm.
+
+After redeploy, verify the skills in `~/.claude/skills/` match the workspace versions (compare file contents on the changed skills).
+
+### Restart required
+
+Once the redeploy completes, tell the user:
+
+```
+**Action needed:** Fully quit and reopen Claude Desktop.
+- Right-click the Claude Desktop icon in the dock
+- Select **Quit** (closing the window is not enough)
+- Reopen Claude Desktop
+
+Cowork only scans the skills directory on a full launch, so the updated
+skills will not register until you restart.
+```
+
 ## Part 8: Clean up and report
 
 Delete the temp directories:

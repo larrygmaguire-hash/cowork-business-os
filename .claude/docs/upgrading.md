@@ -12,7 +12,9 @@ When a new version of the Cowork Business OS template is released, your workspac
 2. Cowork shows you what changed between your version and the latest
 3. You review the plan and approve
 4. Cowork backs up your workspace, updates the template-owned files, and leaves your own content alone
-5. Your `state.json` records the new version
+5. If any skills changed, Cowork redeploys them to `~/.claude/skills/` (via the same three options as the initial install — Cowork-driven Finder, user Finder, or Terminal)
+6. You fully quit and reopen Claude Desktop so the updated skills register
+7. Your `state.json` records the new version
 
 ---
 
@@ -180,6 +182,18 @@ The skill copies engine files from the temp folder into your workspace, adds new
 ### Step 6: Verify
 
 The skill runs `Infrastructure/Scripts/prima/validate-state.sh` to confirm `state.json` is still valid after the upgrade.
+
+### Step 6a: Redeploy changed skills
+
+If the upgrade changed any files under `.claude/skills/`, those changes are in the workspace repo but not yet in Cowork's active skills registry at `~/.claude/skills/`. The skill offers the same three options as the initial install:
+
+- **Option A** — Cowork drives Finder to copy the changed skill folders into `~/.claude/skills/`
+- **Option B** — You do the copy in Finder yourself
+- **Option C** — You run a `cp -R` command in Terminal
+
+After the copy completes, Claude Desktop must be fully quit and reopened before the updated skills register. The upgrade skill reminds you of this at the end.
+
+If no skills changed in the upgrade, this step is skipped.
 
 ### Step 7: Clean up and report
 

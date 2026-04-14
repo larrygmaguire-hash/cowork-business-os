@@ -32,6 +32,82 @@ Ask: "Ready to proceed?"
 
 ---
 
+## Part 0: Deploy the skills
+
+Cowork reads skills from `~/.claude/skills/` on the user's machine, not from the workspace folder. Before running the rest of setup, confirm the 22 skills are deployed. If they are not, walk the user through deploying them.
+
+### Check what is deployed
+
+List the contents of the workspace's `.claude/skills/` folder and `~/.claude/skills/`. Compare. If every workspace skill folder exists in `~/.claude/skills/`, skills are deployed — skip to Part 1.
+
+If any are missing, present a Decision checkpoint:
+
+```
+Your workspace has 22 skills at `.claude/skills/`, but Cowork reads skills
+from `~/.claude/skills/`. The following skills are missing from your
+Cowork registry and need to be deployed:
+
+[list missing skills]
+
+Three options, in order of convenience:
+
+**Option A — I deploy the skills for you (recommended).**
+If I have computer-use access on this machine, I can open two Finder windows
+(your workspace's `.claude/skills/` and `~/.claude/skills/`), drag the skill
+folders across, and verify each landed correctly. You watch, approve, done.
+
+**Option B — You deploy the skills in Finder.**
+1. Open Finder
+2. Press Cmd+Shift+G and type `~/.claude/skills/` (create the folder if prompted)
+3. Open a second Finder window showing this workspace's `.claude/skills/` folder
+4. Select all skill folders and drag them to the `~/.claude/skills/` window
+5. Tell me when done.
+
+**Option C — You deploy the skills in Terminal.**
+Run these commands (replace the path with your workspace path):
+
+    mkdir -p ~/.claude/skills
+    cp -R [workspace-path]/.claude/skills/* ~/.claude/skills/
+
+Tell me when done.
+
+Which option? (A / B / C)
+```
+
+### Executing Option A (Cowork-driven Finder automation)
+
+If the user chooses A, attempt computer-use to open Finder, navigate to both folders, and drag the missing skill folders across. Verify each target folder has its `SKILL.md` file after the drag.
+
+If computer-use is not available (the tool is not enabled in this session), report that and offer Options B or C instead.
+
+### Executing Options B and C (user-driven)
+
+Wait for the user to confirm they have completed the deployment. Then re-check `~/.claude/skills/` to confirm all 22 skills are present. Report any still missing; ask the user to re-check or pick a different option.
+
+### After deployment — restart required
+
+Once all 22 skills are present in `~/.claude/skills/`, tell the user:
+
+```
+Skills deployed. One more step before I can continue:
+
+**Action needed:** Fully quit and reopen Claude Desktop.
+- Right-click the Claude Desktop icon in the dock
+- Select **Quit** (closing the window is not enough)
+- Reopen Claude Desktop
+- Open this workspace in Cowork again
+- Come back and say "resume setup" — I will continue from Part 1
+
+Cowork only scans the skills directory on a full launch, so the new skills
+will not appear until you restart.
+```
+
+Stop here. Do not proceed to Part 1 until the user has restarted and resumed. Setup state is preserved — the next session will read `state.json` and see setup is mid-flow.
+
+If the user says "skip the restart" or "continue anyway", warn that the rest of setup will work (it reads/writes state and company files which do not depend on registered skills), but any other skill the wizard references (such as `creating-projects` for Part 8 sample conversion) may not be available until restart. Then proceed at their discretion.
+
+---
+
 ## Part 1: About You (Profile Preferences)
 
 Ask these questions **one at a time**. Wait for each answer before asking the next.

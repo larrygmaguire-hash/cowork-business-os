@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/larrygmaguire-hash/cowork-business-os/main/.claude/engine-manifest.schema.json",
   "manifestVersion": "1.0",
-  "templateVersion": "2.0.0",
+  "templateVersion": "2.0.1",
   "description": "Classifies every file in the Cowork Business OS template as engine-owned, user-owned, or seed (installed once, user may edit). Used by the upgrade-workspace skill to decide what to update on upgrade.",
   "classifications": {
     "engine": {

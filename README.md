@@ -1,18 +1,63 @@
 # Cowork Business OS
 
-**Version:** 2.0.0
+**Version:** 2.0.1
 
-A free, ready-made business workspace for Claude Desktop (Cowork mode). Includes 22 pre-built skills, project state management, a setup wizard, and full documentation. Clone this template, run `/setup`, and have a complete business operating system running in Cowork in under 10 minutes.
+A free, ready-made business workspace for Claude Desktop (Cowork mode). Includes 22 pre-built skills, project state management, a setup wizard, and full documentation. Clone this template, deploy the skills, and have a complete business operating system running in Cowork in under 15 minutes.
 
 ---
 
 ## Quick Start
 
-1. Clone or download this repository to your machine
-2. Open Claude Desktop, enable Cowork mode, and point it at the folder
-3. In Claude, type: **"run setup"** (or **"run the setup skill"**)
+Four steps.
 
-The setup skill guides you through everything — your profile, business identity, company knowledge, folder structure, sample project disposition, and which skills to keep. Start there.
+### 1. Clone or download this repository
+
+Put the repository somewhere on your machine you will remember. For example, `~/Developer/cowork-business-os/` or `~/Documents/cowork-business-os/`.
+
+### 2. Open the workspace in Cowork and run setup
+
+Open Claude Desktop, enable Cowork mode, and point it at the folder where you cloned the repository. Then say:
+
+> run setup
+
+The setup skill takes it from here. It asks for your profile, business identity, and company knowledge, and guides you through the folder structure, sample content, and skill selection.
+
+### 3. Deploy the skills
+
+Cowork reads skills from `~/.claude/skills/` on your machine, not from the workspace folder. The 22 skills that ship with this repository need to be copied into that location once, and again whenever the template is updated.
+
+During setup, Cowork will offer to do this for you. Three options, in order of convenience:
+
+**Option A — Cowork deploys the skills for you (recommended).** If Cowork has computer-use access, it opens two Finder windows and drags the skill folders into `~/.claude/skills/` automatically. You watch, approve, done. No Terminal, no manual Finder work.
+
+**Option B — Deploy the skills yourself with Finder.** If computer-use is not available or you prefer to do it yourself:
+
+1. Open a Finder window
+2. Press `Cmd+Shift+G` and type `~/.claude/skills/` then press Return. If the folder does not exist, create it — open `~/.claude/`, then create a `skills` folder inside
+3. Open a second Finder window and navigate to the workspace folder you cloned, then into `.claude/skills/`
+4. Select all 22 skill folders in the workspace window and drag them into the `~/.claude/skills/` window
+5. Confirm any overwrite prompts
+
+**Option C — Deploy the skills with Terminal (advanced).** If you prefer the command line:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R ~/Developer/cowork-business-os/.claude/skills/* ~/.claude/skills/
+```
+
+Replace the path with wherever you cloned the repository.
+
+### 4. Fully quit and reopen Claude Desktop
+
+Right-click the Claude Desktop icon in the dock and select **Quit**. Closing the window is not enough — Cowork only scans the skills directory on a full launch.
+
+Reopen Claude Desktop, open the workspace in Cowork, and you are ready. The 22 skills are now registered and can be triggered by asking Cowork to do something in their scope (e.g., "create a new project", "draft an email", "run a status report").
+
+### When the template is updated
+
+Re-run whichever deploy option you used in step 3, then quit and reopen Claude Desktop. If you customised any skill in `~/.claude/skills/` directly, back it up first — the re-deploy overwrites it.
+
+The `upgrade-workspace` skill can handle the re-deploy for you. After an upgrade that changes skills, ask Cowork "deploy the updated skills" and it handles the copy.
 
 ---
 
