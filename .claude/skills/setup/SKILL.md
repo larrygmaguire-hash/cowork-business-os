@@ -70,18 +70,58 @@ Ask these questions **one at a time**:
 
 After collecting all answers, generate the Global Instructions text by combining the user's answers with the fixed sections below. Present the complete text.
 
-**Fixed sections to include in every Global Instructions output:**
+**Fixed sections to include in every Global Instructions output.** See `.claude/docs/global-instructions.md` for the canonical template. Generate the following structure:
 
 ```
-## Workspace Bootstrap
+## Workspace Bootstrap -- MANDATORY
 
-At the start of every task where the workspace folder is accessible:
+At the start of EVERY task where the workspace folder is accessible:
 
-1. Read .claude/CLAUDE.md -- this is the master instruction document for the workspace. Follow all rules in it.
-2. When working on a specific project folder, also read that project folder's CLAUDE.md if one exists.
-3. Before producing any content, communications, or documents, read .claude/company/overview.md and .claude/company/voice.md.
+1. **Read `.claude/CLAUDE.md`** -- master instruction document for the workspace. Contains state management rules, file conventions, autonomy levels, checkpoint protocol, PDF processing scale, and all operational standards. Follow everything in it.
 
-These workspace files are the authoritative source for how to operate. If instructions in these files conflict with anything else, the workspace files take precedence.
+2. **Read `.claude/state/state.json`** when:
+   - The user asks about projects, status, or what they should work on
+   - You need to assign a new project ID
+   - You are starting a session
+   - You need to know the workspace identity (name, type, GitHub repo)
+
+3. **Read `.claude/state/projects/P###.json`** when working on a specific project (where P### is the project ID). Contains description, stoppedAt, lastAction, sessionHistory, milestones.
+
+4. **Read project-level `CLAUDE.md`** when working inside a project folder. The path is:
+   - `Projects/P### Project Name/CLAUDE.md` for internal projects
+   - `Clients/[Client Name]/CLAUDE.md` for client work
+   - `Clients/[Client Name]/P### Project Name/CLAUDE.md` for client projects
+
+   Project CLAUDE.md files INHERIT from `.claude/CLAUDE.md` and ADD project-specific context. On conflict between master and project rules, STOP and ask the user.
+
+5. **Read department `CLAUDE.md`** when working inside a department folder (e.g., `01 Finance/CLAUDE.md`).
+
+6. **Read `.claude/company/` files** before producing any content, communications, or documents:
+   - `overview.md` -- what the business does
+   - `voice.md` -- brand voice and tone
+   - `brand.md` -- visual identity
+   - `audiences.md` -- who you are writing for
+   - `team.md` -- key people
+   - `industry.md` -- terminology and regulations
+
+7. **Consult `.claude/FRAMEWORK.md`** when creating new components or uncertain about workspace structure.
+
+8. **Consult `.claude/docs/`** for reference (getting-started, folder-structure, available-automations, capabilities-reference, glossary, cloud-sync-warning, specification).
+
+These workspace files are the authoritative source for how to operate. Workspace files take precedence over conflicting instructions.
+
+
+## Skills Available
+
+Cowork auto-detects skills in `.claude/skills/[name]/SKILL.md`. Use them proactively. The full inventory:
+
+**Session management:** session-briefing, session-close, saving-session, resuming-session
+**Project management:** creating-projects, creating-clients, workspace-status, status-report
+**Git:** syncing-workspace
+**Content creation:** copywriting, drafting-documents, email-drafting, meeting-notes, documenting-workflows, creating-presentations, search-engine-optimisation
+**Document processing:** processing-pdfs, processing-documents, processing-spreadsheets
+**Meta:** setup, creating-skills
+
 
 ## Graduated Autonomy
 
@@ -97,23 +137,53 @@ Issues blocking the current task: missing folder structure, broken cross-referen
 ### Level 4: STOP (Ask Before Proceeding)
 Changes that alter scope, intent, audience, or commitments: tone changes, client-facing content, financial figures, external communications, deleting files, archiving projects.
 
-When unsure, move up one level. The cost of asking is low.
+When unsure, move up one level.
+
+
+## No Permission Prompts for File Edits
+
+When the user tells you to edit, change, update, or modify a file, do it immediately. The instruction IS the permission. Never ask "shall I?" before writing. Exception: Level 4 items only (client-facing externally, financial figures, contracts).
+
 
 ## Blocked Commands
 
 Require explicit confirmation before execution:
-- rm -rf -- confirm path and scope
-- sudo -- confirm necessity
-- git push --force -- never to main/master
-- git reset --hard -- confirm no uncommitted work lost
+- `rm -rf` -- confirm path and scope
+- `sudo` -- confirm necessity
+- `git push --force` -- never to main/master
+- `git reset --hard` -- confirm no uncommitted work lost
+- `DROP TABLE`, `DELETE FROM` (no WHERE) -- data loss
+
 
 ## Checkpoint Protocol
 
 Multi-step workflows must pause for input using these formats:
 
-Review: After producing output the user needs to approve. Options: Approve / Revise / Reject.
-Decision: When multiple valid approaches exist. Present options with tradeoffs.
-Action: When the user must do something Claude cannot. State clearly and wait.
+- **Review:** After producing output needing approval. Options: Approve / Revise / Reject.
+- **Decision:** When multiple valid approaches exist. Present options with tradeoffs.
+- **Action:** When the user must do something Claude cannot. State clearly and wait.
+
+
+## State Management Discipline
+
+Before writing to `.claude/state/state.json` or `.claude/state/projects/P###.json`:
+
+1. Run `Infrastructure/Scripts/prima/backup-state.sh`
+2. Make the change
+3. Run `Infrastructure/Scripts/prima/validate-state.sh`
+4. If validation fails, restore from `.claude/state.backups/`
+
+Project IDs are sequential (P001, P002, ...). Never reuse. Never change meaning.
+
+
+## PDF Processing
+
+Before reading any PDF, check size and page count. Use the 5-level scale in `.claude/CLAUDE.md`. Never skip the size check. Never attach large PDFs (Scale 3+).
+
+
+## Language and Style
+
+Use [UK_OR_US_ENGLISH from Part 1] throughout. Match the tone described in `.claude/company/voice.md`. Never fabricate citations. If a source cannot be verified, state so explicitly.
 ```
 
 Present the complete Global Instructions text:
