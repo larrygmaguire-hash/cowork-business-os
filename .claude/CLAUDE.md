@@ -78,6 +78,8 @@ Never create files in the workspace root. Place in appropriate subfolders.
 | Product information | `06 Products/` |
 | Legal documents | `07 Legal/` |
 
+Department folders are optional. See `.claude/docs/departments.md` for the full guide on when to use them and how to customise or remove them.
+
 **Heavy files** (PDFs, Office documents, images, videos, large datasets): keep in cloud storage. Reference by path. Do not duplicate into the workspace unless actively working on them.
 
 ---

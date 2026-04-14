@@ -116,7 +116,7 @@ At the start of EVERY task where the workspace folder is accessible:
 
 7. **Consult `.claude/FRAMEWORK.md`** when creating new components or uncertain about workspace structure.
 
-8. **Consult `.claude/docs/`** for reference (getting-started, folder-structure, available-automations, capabilities-reference, glossary, cloud-sync-warning, specification).
+8. **Consult `.claude/docs/`** for reference (getting-started, folder-structure, departments, available-automations, capabilities-reference, glossary, cloud-sync-warning, specification).
 
 These workspace files are the authoritative source for how to operate. Workspace files take precedence over conflicting instructions.
 
@@ -213,26 +213,62 @@ Tell me when done and I will continue.
 
 ## Part 3: Workspace Folders
 
-Create missing directories. Do not overwrite existing ones.
+Create missing core directories. Do not overwrite existing ones.
 
-**Always create:**
+**Always ensure these exist:**
 - `Projects/`, `Archive/`, `Clients/`
 - `Documentation/`, `Documentation/Reports/`
 - `Infrastructure/`, `Infrastructure/Scripts/`, `Infrastructure/Scripts/prima/`
 - `.claude/state/`, `.claude/state/projects/`
 - `.claude/company/`, `.claude/config/`, `.claude/docs/`
 
-**Ask about department folders:**
-"Which department folders do you need? (answer with numbers, or 'none', or 'all')"
-- 01 Finance
-- 02 Human Resources
-- 03 Sales
-- 04 Marketing
-- 05 Operations
-- 06 Products
-- 07 Legal
+### Department Folders
 
-Create only the ones requested.
+The template ships with seven department folders at the workspace root. Before asking the user what to do with them, explain the concept:
+
+```
+The template includes seven department folders — Finance, Human Resources, Sales,
+Marketing, Operations, Products, Legal. Each has default subfolders and a CLAUDE.md
+file describing what it's for.
+
+Department folders hold workspace-wide business-function material — things that
+support the whole business, not a single project or client. Examples:
+- Marketing brand guidelines (applies to everything)
+- HR policies (applies to every employee)
+- Standard proposal templates (used across many sales)
+
+They are optional. A solo creator or someone whose work is entirely project-based
+may not need them. See `.claude/docs/departments.md` for the full guide.
+```
+
+Then ask:
+
+```
+How would you like to handle the department folders?
+
+A) Keep all seven as shipped — I'll customise as I go
+B) Select which to keep — I'll tell you which ones
+C) Delete all seven — I don't need departments, my work is project-based
+D) Keep all and add more — I have additional departments to add
+```
+
+Handle the user's choice:
+
+- **Keep all:** no action. Remind the user they can delete or rename later.
+- **Select:** list the seven departments, ask "which to keep?", delete the rest.
+- **Delete all:** remove all seven department folders.
+- **Keep and add:** ask for the names of the new departments. For each, create a folder with the next available number prefix (`08 Research`, `09 IT`, etc.), create a `CLAUDE.md` following the pattern of the shipped departments (with a `[configure]` placeholder), and add default subfolders if the user specifies any.
+
+For each department the user keeps (whether shipped or added), ask:
+
+```
+For [Department name], do you want to:
+- Configure it now (I'll ask about subfolders, sensitive data rules, integrations)
+- Leave as default — configure later
+- Rename it (e.g., "06 Products" → "06 Services")
+```
+
+If configuring now, walk through the configuration items listed in that department's `CLAUDE.md` (sensitive data, subfolders, integrations, brand voice, etc.) one at a time. Update the `CLAUDE.md` with the answers.
 
 ---
 
