@@ -53,6 +53,35 @@ Cowork auto-detects these. Invoke by name or just describe what you want.
 - `setup` -- first-time workspace personalisation wizard
 - `creating-skills` -- scaffold new skills
 
+### The Setup Wizard
+
+The `/setup` skill walks you through full personalisation in one session. It asks questions one at a time (no overwhelming forms), generates everything for you, and tells you exactly what to do.
+
+**What it asks:**
+1. About you -- name, role, location, profession, language preference, communication style
+2. About your business -- name, what it does, audiences, brand voice, multiple brands if any
+3. Which department folders you want (01 Finance, 02 HR, etc.)
+4. About your business in detail -- six topics for the company knowledge files (overview, voice, brand, audiences, team, industry)
+
+**What it generates:**
+- **Profile Preferences text** -- complete, ready to paste into Settings > Profile in Claude Desktop
+- **Global Instructions text** -- complete, with the workspace bootstrap directive that tells Cowork to read CLAUDE.md, state.json, project CLAUDE.md files at the right paths, company knowledge, and all operational rules. Ready to paste into Settings > Cowork > Edit Global Instructions.
+
+**What it creates:**
+- All workspace folders (core + selected departments)
+- `.claude/state/state.json` populated with your workspace identity
+- All 6 `.claude/company/` files populated from your answers (or left as placeholders if you skip)
+- Updated `.claude/CLAUDE.md` with your workspace identity and language preference
+- Scheduled task descriptions for morning briefing and evening close
+
+**What you do manually (only two things):**
+1. Paste the Profile Preferences text into Settings > Profile
+2. Paste the Global Instructions text into Settings > Cowork > Edit Global Instructions
+
+The wizard pauses at each paste step using a Checkpoint and waits for you to confirm before continuing.
+
+You can also re-run `/setup` later. It detects existing configuration and offers reconfiguration rather than fresh setup -- useful if your business voice changes or you add a new brand.
+
 ### State Management
 
 Every project gets a unique ID (P001, P002, ...) and is tracked in `.claude/state/state.json`. Project details live in individual files at `.claude/state/projects/P###.json`. Cowork knows what you worked on, where you stopped, and what to do next. Session continuity across context limits.
