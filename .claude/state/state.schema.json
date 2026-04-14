@@ -125,6 +125,54 @@
       "type": "integer",
       "minimum": 1
     },
+    "nextClientNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "clients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^C\\d{3}$",
+            "description": "Stable client ID. Format: C + 3-digit zero-padded number (C001-C999). Never reused."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "folderName": {
+            "type": "string",
+            "description": "Full folder name (C### Client Name)"
+          },
+          "industry": {
+            "type": "string"
+          },
+          "engagementType": {
+            "type": "string",
+            "enum": ["retainer", "project-based", "hourly", "other"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "archived"]
+          },
+          "created": {
+            "type": "string",
+            "format": "date"
+          },
+          "path": {
+            "type": "string"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
     "sessionHistory": {
       "type": "array",
       "maxItems": 20,

@@ -8,7 +8,9 @@
     "created": ""
   },
   "nextProjectNumber": 1,
+  "nextClientNumber": 1,
   "projects": [],
+  "clients": [],
   "sessionHistory": [],
   "recentWork": [],
   "priorities": {

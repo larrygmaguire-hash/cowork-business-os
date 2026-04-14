@@ -1,117 +1,140 @@
 ---
 name: creating-clients
 description: >
-  Create a new client folder with standardised structure, contact tracking, and project registry. Generates README with company information and contact details.
+  Create a new client folder with a sequential C### ID, standardised structure (Projects/, Communications/, Contracts/), and CLAUDE.md with contact information. Use when the user wants to onboard a new client or set up a client folder.
 ---
 
 # Creating Clients
 
-Create a new client folder with consistent structure.
+Create a new client folder with a sequential C### ID and consistent structure.
 
 ## Step 1: Gather Client Details
 
-Ask for:
+Ask these questions one at a time:
 
-1. **Client/company name** (required)
-2. **Contact names** (required — at least one person associated with this client). Accept comma-separated or list format.
-3. **Industry** (optional)
+1. **Client name** (required)
+2. **Industry** (optional)
+3. **Engagement type** (retainer / project-based / hourly / other)
+4. **Primary contacts** -- at least one (name, role, email)
+5. **Communication preferences** -- preferred channel, response time expectations, tone
 
-If user provided name with initial input (e.g., "creating-clients Acme Corp"), use that directly and ask for contacts.
+## Step 2: Assign Next C### ID
 
-Example prompt for contacts:
+Read `.claude/state/state.json` and find the highest existing C### ID under client tracking. Assign the next sequential number, zero-padded to 3 digits (C001, C002, ..., C099, ..., C999).
+
+If no clients exist yet, start at C001.
+
+If client tracking is not yet present in state.json, add a `clients` array alongside `projects` and a `nextClientNumber` field alongside `nextProjectNumber`.
+
+## Step 3: Generate Folder Name
+
+Format: `C### Client Name` in Title Case (e.g., `C001 Acme Corp`, `C002 Smith Consulting`).
+
+## Step 4: Create Folder Structure
+
+Create the client folder at the workspace root under `Clients/`:
 
 ```
-Who are the main contacts for this client? (names only — full details can be added later)
-```
-
-## Step 2: Generate Folder Name
-
-Convert client name to folder format:
-
-- Format: Title-Case with hyphens for spaces
-- Example: `Acme-Corporation`
-
-## Step 3: Create Folder Structure
-
-Create in `Clients/`:
-
-```
-Clients/{Client-Name}/
-├── README.md
+Clients/C### Client Name/
+├── CLAUDE.md
 ├── Projects/
 ├── Communications/
-└── Reference/
+└── Contracts/
 ```
 
-## Step 4: Generate README.md
+The subfolders do NOT have CLAUDE.md files. Only the top-level client folder does.
+
+## Step 5: Generate CLAUDE.md
+
+Create `Clients/C### Client Name/CLAUDE.md` with this structure:
 
 ```markdown
-# {Client Name}
+# C### Client Name
 
-**Industry:** [Industry or "To be added"]
-**Relationship started:** [Today's date]
-**Cloud storage:** To be configured
+## Client context
 
-## Overview
+- **ID:** C###
+- **Name:** [Client name]
+- **Industry:** [Industry]
+- **Engagement type:** [Retainer / Project-based / Hourly]
+- **Status:** active
 
-[To be added — brief description of client relationship]
+## Primary contacts
 
-## Contacts
-
-| Name | Role | Email | Phone |
+| Name | Role | Email | Notes |
 |------|------|-------|-------|
-| {Contact 1} | To be added | To be added | To be added |
-| {Contact 2} | To be added | To be added | To be added |
+| [Name] | [Role] | [email] | [Notes] |
 
-## Active Projects
+## Communication preferences
 
-| Project | Status | Location |
-|---------|--------|----------|
-| [None yet] | | |
+- **Preferred channel:** [Email / Slack / Phone / Other]
+- **Response time:** [e.g., within 24 hours]
+- **Tone:** [Formal / Friendly / Technical]
+- **Cadence:** [e.g., weekly status updates]
+
+## Subfolders
+
+- `Projects/` -- client projects (each numbered P###, registered in state.json)
+- `Communications/` -- emails, meeting notes, correspondence
+- `Contracts/` -- engagement letters, statements of work, signed agreements
+
+## Engagement history
+
+| Date | Activity | Notes |
+|------|----------|-------|
+| [Today's date] | Client onboarded | [Initial scope notes] |
 
 ## Notes
 
-Relationship notes and key information to be added.
-
-## Cloud Storage
-
-Heavy files for this client are stored at:
-- Path to be configured
+[Any additional context that does not fit elsewhere]
 ```
 
-## Step 5: Confirm Client Creation
+## Step 6: Update state.json
 
-```markdown
-## Client Folder Created
+Backup state, then add the client to the `clients` array in state.json:
 
-**Location:** `Clients/{Client-Name}/`
-**Company:** {Client Name}
-**Contacts:** {Contact names}
-
-Structure:
-- README.md ✓
-- Projects/ ✓
-- Communications/ ✓
-- Reference/ ✓
-
-Ready to add projects and documents for this client.
-
----
-
-Want me to create a project for this client?
+```json
+{
+  "id": "C###",
+  "name": "Client Name",
+  "folderName": "C### Client Name",
+  "industry": "...",
+  "engagementType": "retainer",
+  "status": "active",
+  "created": "YYYY-MM-DD",
+  "path": "Clients/C### Client Name",
+  "contacts": ["Name 1", "Name 2"]
+}
 ```
 
-## Step 6: Handle Follow-up
+Increment `nextClientNumber`. Validate state.
 
-If user says yes to creating a project:
+## Step 7: Optional First Project
 
-Invoke the `creating-projects` skill with:
-- Category pre-selected as `client`
-- `companyName` field: {Client Name}
-- `contacts` field: [Contact names array]
+Ask: "Create a first project for this client now?"
 
-Otherwise, workflow ends. README.md can be updated manually as the relationship develops.
+If yes, invoke the `creating-projects` skill with the client folder as the location. The new project will live at `Clients/C### Client Name/Projects/P### Project Name/`.
 
----
+## Step 8: Confirm
 
-Begin by asking for client name and primary contact.
+Report:
+
+```
+**Client created**
+
+- ID: C###
+- Folder: Clients/C### Client Name/
+- Subfolders: Projects/, Communications/, Contracts/
+- CLAUDE.md: populated with contact details
+- state.json: updated
+
+What next?
+```
+
+## Workflow Notes
+
+- Client IDs (C001, C002, ...) are sequential and never reused
+- Project IDs and Client IDs are independent number spaces
+- A client can have many projects, each with its own P### ID
+- Subfolders inside the client folder do NOT have CLAUDE.md -- only the client root
+- When a client engagement ends, change status in state.json to `inactive` (not deleted) and optionally move to `Archive/`

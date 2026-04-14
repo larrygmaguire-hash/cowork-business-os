@@ -309,8 +309,7 @@ All embedded in `.claude/CLAUDE.md` and your Global Instructions.
 ```
 your-business-name/
 ├── Projects/                   Active projects (P### Project Name/)
-├── Clients/                    Client work
-│   └── _Templates/            Client folder template
+├── Clients/                    Client work (C### Client Name/)
 ├── Documentation/
 │   ├── Templates/             Reusable document templates
 │   └── Reports/               Generated reports

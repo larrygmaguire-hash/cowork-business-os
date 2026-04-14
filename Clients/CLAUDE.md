@@ -1,25 +1,24 @@
 # Clients Folder
 
-This folder holds your client and customer work. Each client gets its own subfolder.
+This folder holds your client and customer work. Each client gets its own subfolder named `C### Client Name` (e.g., `C001 Acme Corp`, `C002 Smith Consulting`).
 
 ## How to use this folder
 
-- **Create a new client:** ask Cowork to create a new client, or run `/creating-clients`. The skill creates the folder, populates the contact information, and optionally creates a first project under the client.
-- **Folder naming:** Title Case with hyphens for multi-word names (`Acme-Corp`, `Smith-Consulting`).
-- **Templates:** the `_Templates/` folder contains starter structure for new client folders.
+- **Create a new client:** ask Cowork to create a new client, or run `/creating-clients`. The skill assigns the next C### ID, creates the folder with subfolders, and populates contact information.
+- **Folder naming:** `C### Client Name` in Title Case (e.g., `C001 Acme Corp`).
+- **IDs are sequential** (C001, C002, ...). Never reused.
 
 ## What goes in a client folder
 
 Every client folder contains:
 
 - `CLAUDE.md` -- client-specific context (background, contacts, communication preferences, engagement history)
-- Sub-projects in their own `P### Project Name/` folders (each registered in state.json)
-- Shared assets, contracts, and reference materials at the client root level
+- `Projects/` -- client projects (each numbered P###, registered in state.json)
+- `Communications/` -- emails, meeting notes, correspondence
+- `Contracts/` -- engagement letters, statements of work, signed agreements
 
-## Sample client
+Subfolders do NOT have CLAUDE.md files. The client-level CLAUDE.md covers the whole client folder.
 
-`Sample-Client/` is a placeholder showing the structure. Delete or replace it when you onboard real clients.
+## Sample clients
 
-## Templates
-
-`_Templates/` contains a `Project Folder Template/` showing the standard structure for projects within a client folder. The `creating-projects` skill copies from this template when creating a new project under a client.
+`C001 Sample Client/` through `C004 Sample Client/` are placeholders showing the structure. Delete or replace them when you onboard real clients.

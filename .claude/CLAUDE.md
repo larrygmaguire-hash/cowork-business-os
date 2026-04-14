@@ -38,8 +38,7 @@ If a file contains only placeholder text, ask the user or skip that context.
 ```
 [workspace-name]/
 ├── Projects/                   Active projects (P### Project Name/)
-├── Clients/                    Client work
-│   └── _Templates/            Client folder template
+├── Clients/                    Client work (C### Client Name/)
 ├── Documentation/
 │   ├── Templates/             Reusable document templates
 │   └── Reports/               Generated reports
