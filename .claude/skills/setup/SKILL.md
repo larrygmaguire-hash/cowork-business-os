@@ -130,7 +130,7 @@ Cowork auto-detects skills in `.claude/skills/[name]/SKILL.md`. Use them proacti
 **Git:** syncing-workspace
 **Content creation:** copywriting, drafting-documents, email-drafting, meeting-notes, documenting-workflows, creating-presentations, search-engine-optimisation
 **Document processing:** processing-pdfs, processing-documents, processing-spreadsheets
-**Meta:** setup, creating-skills
+**Meta:** setup, creating-skills, upgrade-workspace
 
 
 ## Graduated Autonomy
@@ -276,9 +276,12 @@ If configuring now, walk through the configuration items listed in that departme
 
 Update `.claude/state/state.json` with the workspace identity from the user's answers:
 
+Before writing, read the `VERSION` file at the repo root to get the current template version. Use that value for `templateVersion`.
+
 ```json
 {
   "version": "2.0.0",
+  "templateVersion": "[contents of VERSION file, e.g. 2.0.0]",
   "workspace": {
     "name": "[Business name from Part 2]",
     "id": "[kebab-case-id from business name]",

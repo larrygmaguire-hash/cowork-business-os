@@ -10,6 +10,11 @@
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
       "description": "Semantic version of the state schema"
     },
+    "templateVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Version of the Cowork Business OS template installed. Set by setup skill, updated by upgrade-workspace skill."
+    },
     "workspace": {
       "type": "object",
       "required": ["name", "id"],

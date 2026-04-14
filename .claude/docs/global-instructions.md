@@ -81,7 +81,7 @@ Cowork auto-detects skills in `.claude/skills/[name]/SKILL.md`. The full invento
 **Git:** syncing-workspace
 **Content creation:** copywriting, drafting-documents, email-drafting, meeting-notes, documenting-workflows, creating-presentations, search-engine-optimisation
 **Document processing:** processing-pdfs, processing-documents, processing-spreadsheets
-**Meta:** setup, creating-skills
+**Meta:** setup, creating-skills, upgrade-workspace
 
 Use these skills proactively. When the user describes a task that matches a skill, invoke the skill rather than improvising.
 

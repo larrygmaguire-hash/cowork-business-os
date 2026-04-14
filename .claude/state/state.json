@@ -19,5 +19,6 @@
     "upcoming": []
   },
   "pendingItems": [],
-  "selectedCalendars": []
+  "selectedCalendars": [],
+  "templateVersion": "2.0.0"
 }

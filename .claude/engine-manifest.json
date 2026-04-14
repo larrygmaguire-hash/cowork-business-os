@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/larrygmaguire-hash/cowork-business-os/main/.claude/engine-manifest.schema.json",
+  "manifestVersion": "1.0",
+  "templateVersion": "2.0.0",
+  "description": "Classifies every file in the Cowork Business OS template as engine-owned, user-owned, or seed (installed once, user may edit). Used by the upgrade-workspace skill to decide what to update on upgrade.",
+  "classifications": {
+    "engine": {
+      "description": "Template owns these. Overwritten on upgrade without asking. Safe to update because users should not modify them; if they do, they fork.",
+      "paths": [
+        ".claude/CLAUDE.md",
+        ".claude/FRAMEWORK.md",
+        ".claude/README.md",
+        ".claude/engine-manifest.json",
+        ".claude/docs/specification.md",
+        ".claude/docs/departments.md",
+        ".claude/docs/upgrading.md",
+        ".claude/skills/**/SKILL.md",
+        ".claude/skills/**/references/**",
+        ".claude/state/state.schema.json",
+        "Infrastructure/Scripts/prima/backup-state.sh",
+        "Infrastructure/Scripts/prima/validate-state.sh",
+        "Infrastructure/Scripts/prima/CLAUDE.md",
+        "VERSION",
+        "CHANGELOG.md",
+        "LICENCE"
+      ]
+    },
+    "user": {
+      "description": "User owns these. Never touched on upgrade under any circumstance. Contains all the user's business data, customisations, and content.",
+      "paths": [
+        ".claude/company/**",
+        ".claude/config/**",
+        ".claude/state/state.json",
+        ".claude/state/projects/*.json",
+        "Projects/**",
+        "Clients/**",
+        "Archive/**",
+        "Documentation/**",
+        "01 Finance/**",
+        "02 Human Resources/**",
+        "03 Sales/**",
+        "04 Marketing/**",
+        "05 Operations/**",
+        "06 Products/**",
+        "07 Legal/**"
+      ],
+      "exceptions": [
+        {
+          "path": ".claude/state/state.json",
+          "note": "The upgrade skill updates ONLY the top-level `templateVersion` field in this file. All other fields are user-owned."
+        }
+      ]
+    },
+    "seed": {
+      "description": "Shipped as starting points for users to customise. On upgrade, if the user has modified the file, the skill presents a diff and asks whether to keep, take new, or show diff. If unmodified since install, upgrade updates it silently.",
+      "paths": [
+        ".claude/docs/getting-started.md",
+        ".claude/docs/folder-structure.md",
+        ".claude/docs/global-instructions.md",
+        ".claude/docs/profile-preferences.md",
+        ".claude/docs/capabilities-reference.md",
+        ".claude/docs/glossary.md",
+        ".claude/docs/cloud-sync-warning.md",
+        ".claude/docs/available-automations.md",
+        ".claude/company/overview.md",
+        ".claude/company/voice.md",
+        ".claude/company/brand.md",
+        ".claude/company/audiences.md",
+        ".claude/company/team.md",
+        ".claude/company/industry.md",
+        ".claude/company/CLAUDE.md",
+        ".claude/config/CLAUDE.md",
+        ".claude/config/integrations.json",
+        ".claude/state/projects/README.md",
+        ".claude/state/projects/.gitkeep",
+        "README.md",
+        ".gitignore",
+        "Archive/CLAUDE.md",
+        "Clients/CLAUDE.md",
+        "Projects/CLAUDE.md",
+        "Documentation/README.md",
+        "Documentation/Reports/README.md",
+        "Infrastructure/README.md",
+        "Infrastructure/Scripts/README.md",
+        "01 Finance/CLAUDE.md",
+        "02 Human Resources/CLAUDE.md",
+        "03 Sales/CLAUDE.md",
+        "04 Marketing/CLAUDE.md",
+        "05 Operations/CLAUDE.md",
+        "06 Products/CLAUDE.md",
+        "07 Legal/CLAUDE.md"
+      ]
+    },
+    "sample": {
+      "description": "Sample projects and clients shipped for new users. Users choose during setup to delete, keep, or convert to real ones. After setup, these paths behave as user-owned. The upgrade skill never touches anything under Projects/P00* Sample Project/ or Clients/C00* Sample Client/.",
+      "paths": [
+        "Projects/P001 Sample Project/**",
+        "Projects/P002 Sample Project/**",
+        "Projects/P003 Sample Project/**",
+        "Projects/P004 Sample Project/**",
+        "Clients/C001 Sample Client/**",
+        "Clients/C002 Sample Client/**",
+        "Clients/C003 Sample Client/**",
+        "Clients/C004 Sample Client/**"
+      ]
+    }
+  },
+  "precedence": [
+    "If a path matches multiple classifications, the most specific match wins.",
+    "User classification overrides all others — if anything matches a user path pattern, it is never touched.",
+    "Sample classification is treated as user-owned after setup; before setup, samples are engine-owned.",
+    "Within .claude/skills/, all subfolder files are engine by default — this includes SKILL.md and any files in a references/ subfolder. If a skill has other files the user is expected to edit, they should be listed explicitly under seed."
+  ],
+  "notes": [
+    "Any new file added to a future version of the template must be classified here before release.",
+    "The upgrade-workspace skill aborts if it encounters a file in the template that is not classified in this manifest — this forces discipline around maintaining the manifest.",
+    "A file may be moved between classifications across major versions, but never silently. Any reclassification must be documented in CHANGELOG.md for the release.",
+    "The .git/ directory and dotfiles not listed here (e.g. .DS_Store) are ignored — not classified. The skill never touches unclassified dotfiles."
+  ]
+}

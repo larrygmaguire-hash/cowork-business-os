@@ -1,31 +1,27 @@
 # Changelog
 
-## 2.0.0 (2026-04-14)
+All notable changes to Cowork Business OS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versioning follows [Semantic Versioning](https://semver.org/).
+
+## [2.0.0] — 2026-04-14
+
+Initial public release.
 
 ### Added
-- Initial release of Cowork Business OS template
-- v2.0.0 split-state architecture (index + per-project detail files)
-- 21 pre-built skills:
-  - Session management: session-briefing, session-close, saving-session, resuming-session
-  - Project management: creating-projects, creating-clients, workspace-status, status-report
-  - Git: syncing-workspace
-  - Content creation: copywriting, drafting-documents, email-drafting, meeting-notes, documenting-workflows, creating-presentations, search-engine-optimisation
-  - Document processing: processing-pdfs, processing-documents, processing-spreadsheets
-  - Meta: setup, creating-skills
-- Operational rules embedded in CLAUDE.md (graduated autonomy, checkpoint protocol, blocked commands, no-permission-prompts, PDF scale, state validation)
-- FRAMEWORK.md with component definitions and decision matrix
-- Setup wizard skill for first-time personalisation
-- Company knowledge files (overview, voice, brand, audiences, team, industry)
-- State backup and validation scripts
-- Documentation:
-  - getting-started.md
-  - folder-structure.md
-  - available-automations.md
-  - capabilities-reference.md
-  - cloud-sync-warning.md
-  - glossary.md
-  - specification.md
-  - global-instructions.md (reference template)
-  - profile-preferences.md (reference template)
-- Project tracking with P### IDs, status, priority, session history
-- Global Instructions and Profile Preferences templates
+
+- 21 skills covering session lifecycle, project and client management, content creation, document processing, and meta operations (creating skills, workspace setup)
+- v2 split-state architecture: `state.json` index with per-project detail files in `.claude/state/projects/P###.json`
+- Separate number spaces for projects (`P###`) and clients (`C###`)
+- 7 department folders at the workspace root (Finance, Human Resources, Sales, Marketing, Operations, Products, Legal) each with default subfolders and a `CLAUDE.md` describing purpose and configuration items
+- 4 sample projects and 4 sample clients with `CLAUDE.md` and `PRD.md` as worked examples
+- Company knowledge files in `.claude/company/` (overview, voice, brand, audiences, team, industry) that Claude reads before producing content
+- Infrastructure scripts in `Infrastructure/Scripts/prima/` for state backup and validation
+- Comprehensive README covering installation, setup, daily use, customisation, multi-device sync, backups, troubleshooting
+- Reference documentation in `.claude/docs/` (getting-started, folder-structure, specification, capabilities-reference, glossary, departments, upgrading, global-instructions, profile-preferences)
+- Setup wizard skill that personalises the workspace through a guided Q&A flow
+- Reference documentation for content-heavy skills: copywriting (editing-standards, platform-specs, frameworks), email-drafting (email-patterns), creating-presentations (slide-structure), search-engine-optimisation (seo-checklist)
+- README explainer files in empty scaffolding folders so new users understand what each empty folder is for
+- Engine manifest and `upgrade-workspace` skill establishing the contract for how future versions reach installed workspaces
+
+### Known limitations
+
+- First-run installations before this release do not have `templateVersion` in their `state.json`; the upgrade skill detects this and prompts the user to declare their installed version

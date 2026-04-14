@@ -2,7 +2,7 @@
 
 **Version:** 2.0.0
 
-A free, ready-made business workspace for Claude Desktop (Cowork mode). Includes 21 pre-built skills, project state management, a setup wizard, and full documentation. Clone this template, run `/setup`, and have a complete business operating system running in Cowork in under 10 minutes.
+A free, ready-made business workspace for Claude Desktop (Cowork mode). Includes 22 pre-built skills, project state management, a setup wizard, and full documentation. Clone this template, run `/setup`, and have a complete business operating system running in Cowork in under 10 minutes.
 
 ---
 
@@ -42,7 +42,7 @@ Cowork Business OS is a complete, opinionated workspace template for Claude Desk
 
 - A folder structure that handles projects, clients, departments, and archives
 - A project tracking system with unique IDs (P001, P002...) and session continuity
-- 21 pre-built skills covering content creation, document processing, project management, and session lifecycle
+- 22 pre-built skills covering content creation, document processing, project management, and session lifecycle
 - Operational rules for autonomy, safety, file conventions, and content standards
 - Six company knowledge files that Claude reads before producing any content on your behalf
 - A setup wizard that personalises everything for your business in one session
@@ -331,7 +331,7 @@ your-business-name/
     ├── company/               Business context (6 files)
     ├── config/                Integration configuration
     ├── docs/                  Reference documentation
-    ├── skills/                21 pre-built skills
+    ├── skills/                22 pre-built skills
     └── state/                 Project state
         ├── state.json         Project index
         ├── state.schema.json  Validation schema
