@@ -67,7 +67,7 @@ At the start of EVERY task where the workspace folder is accessible:
 7. **Consult `.claude/FRAMEWORK.md`** when creating new components (projects, clients, skills, departments) or when uncertain about workspace structure.
 
 8. **Consult `.claude/docs/`** for reference documentation:
-   - `getting-started.md`, `folder-structure.md`, `departments.md`, `available-automations.md`, `capabilities-reference.md`, `glossary.md`, `cloud-sync-warning.md`, `specification.md`
+   - `getting-started.md`, `folder-structure.md`, `departments.md`, `upgrading.md`, `available-automations.md`, `capabilities-reference.md`, `glossary.md`, `cloud-sync-warning.md`, `specification.md`
 
 These workspace files are the authoritative source for how to operate. If instructions in these files conflict with anything else, the workspace files take precedence.
 

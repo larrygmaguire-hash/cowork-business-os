@@ -2,7 +2,7 @@
 
 Master workspace instructions for Cowork Business OS. Read this at the start of every task.
 
-For workspace structure conventions, naming rules, and how to build new skills or projects, see `.claude/FRAMEWORK.md`.
+For workspace structure conventions, naming rules, and how to build new skills or projects, see `.claude/FRAMEWORK.md`. For department folder guidance, see `.claude/docs/departments.md`. For template upgrade procedure, see `.claude/docs/upgrading.md`.
 
 ---
 

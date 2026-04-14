@@ -374,7 +374,19 @@ Operational rules live in `.claude/CLAUDE.md`. Edit that file to customise. Note
 
 ## Updating from Upstream
 
-This template will be updated over time with new skills, bug fixes, and refinements. To pull updates from the upstream template into your workspace:
+The template will be updated over time with new skills, bug fixes, and refinements. Cowork Business OS includes an `upgrade-workspace` skill that handles this safely — it checks for new versions, shows you what changed, backs up your workspace, updates only the template-owned files, and leaves everything you've created untouched.
+
+To upgrade, ask Cowork:
+
+```
+check for template updates
+```
+
+The skill walks you through what's available, presents a plan, and asks for approval before changing anything.
+
+**Full guide:** [.claude/docs/upgrading.md](.claude/docs/upgrading.md) — covers the version system, which files are safe to update vs owned by you, how conflicts are handled, and how to roll back if something goes wrong.
+
+**Manual git merge (advanced):** if you prefer to manage updates with git directly, you can add this repository as an upstream remote and merge. Expect manual conflict resolution on any template files you've edited.
 
 ```bash
 cd /path/to/your-business-name
@@ -383,10 +395,7 @@ git fetch upstream
 git merge upstream/main
 ```
 
-You will need to resolve conflicts manually if you have edited template files. To minimise conflicts:
-- Do not edit `.claude/skills/` files directly -- copy and rename instead
-- Do not edit `.claude/CLAUDE.md`, `.claude/FRAMEWORK.md`, or `.claude/docs/` -- these are template-managed
-- Edit `.claude/company/`, `.claude/state/`, `.claude/config/`, and your project folders freely -- these are user-owned
+Use the upgrade skill unless you have a specific reason to avoid it — it exists because git merge is fragile when the user has customised files and the backup/rollback steps are safer when automated.
 
 ---
 
