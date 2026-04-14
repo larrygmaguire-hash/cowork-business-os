@@ -6,6 +6,16 @@ A free, ready-made business workspace for Claude Desktop (Cowork mode). Includes
 
 ---
 
+## Quick Start
+
+1. Clone or download this repository to your machine
+2. Open Claude Desktop, enable Cowork mode, and point it at the folder
+3. In Claude, type: **"run setup"** (or **"run the setup skill"**)
+
+The setup skill guides you through everything — your profile, business identity, company knowledge, folder structure, sample project disposition, and which skills to keep. Start there.
+
+---
+
 ## Table of Contents
 
 1. [What is Cowork Business OS](#what-is-cowork-business-os)

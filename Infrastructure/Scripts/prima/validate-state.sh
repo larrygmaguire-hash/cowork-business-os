@@ -1,6 +1,9 @@
 #!/bin/bash
 # Validate state.json is valid JSON and check required fields
 # Called by skills after writing to state files
+#
+# Run from repo root. Paths are relative to the current working directory.
+# Example: bash Infrastructure/Scripts/prima/validate-state.sh
 
 set -e
 

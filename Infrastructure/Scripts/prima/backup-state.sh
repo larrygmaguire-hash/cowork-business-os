@@ -1,6 +1,9 @@
 #!/bin/bash
 # Backup state directory to timestamped archive
 # Called by skills before writing to state files
+#
+# Run from repo root. Paths are relative to the current working directory.
+# Example: bash Infrastructure/Scripts/prima/backup-state.sh
 
 set -e
 

@@ -60,6 +60,16 @@ Tell me when done and I will continue.
 
 ## Part 2: About Your Business (Global Instructions)
 
+Explain the Global Instructions concept before asking questions:
+
+```
+Global Instructions tell Cowork how to work in this workspace. They live in
+Claude Desktop Settings (Settings > Cowork > Edit Global Instructions), not
+in the repo. A canonical template exists at `.claude/docs/global-instructions.md`
+for reference -- I'll use it as the base and fill in your specifics from the
+answers below.
+```
+
 Ask these questions **one at a time**:
 
 1. "What is your business or organisation name?"
@@ -309,12 +319,63 @@ These are optional. You can also just ask Claude to do these things manually at 
 
 ---
 
-## Part 8: Verify and Report
+## Part 8: Sample Projects and Clients
+
+The template ships with 4 sample projects (`P001`-`P004 Sample Project`) and 4 sample clients (`C001`-`C004 Sample Client`). Each has its own folder with a `CLAUDE.md` and `PRD.md` file to show the convention.
+
+Ask:
+
+```
+The template includes 4 sample projects and 4 sample clients as worked
+examples. How would you like to handle them?
+
+A) Delete all samples -- I'll start fresh with my own projects and clients
+B) Keep as reference -- I'll look at them when creating my first real ones, then delete later
+C) Convert one or more to real projects/clients -- tell me which and their real names
+```
+
+Handle the user's choice:
+
+- **Delete:** remove the sample folders from `Projects/` and `Clients/`. Reset `nextProjectNumber` and `nextClientNumber` to `1`. Clear any sample entries from `state.json` `projects` and `clients` arrays.
+- **Keep:** no action -- leave the samples in place. Remind the user they can delete later with a single command.
+- **Convert:** for each sample being converted, ask the real name. Rename the folder, update the `CLAUDE.md` and `PRD.md` inside, update the corresponding entry in `state.json`.
+
+---
+
+## Part 9: Skills
+
+Explain how skills work:
+
+```
+Skills live in `.claude/skills/[name]/SKILL.md`. Cowork auto-detects them.
+The template ships with 21 skills covering session management, projects,
+content creation, and document processing.
+
+You can:
+- Remove skills you won't use (delete the folder)
+- Add your own skills (create a new folder with SKILL.md -- the
+  `creating-skills` skill walks you through this)
+- Modify existing skills to fit your workflow
+```
+
+Ask:
+
+```
+Want to review the skill list now and remove any that don't apply to your work?
+(yes / no / skip)
+```
+
+If yes, present the inventory grouped as in Part 2's "Skills Available" block. For each group, ask which to remove. Delete the folders for removed skills.
+
+---
+
+## Part 10: Verify and Report
 
 1. Read `.claude/state/state.json` -- confirm version "2.0.0" and workspace identity is populated
 2. Confirm `.claude/company/` files exist (even if placeholder)
 3. Confirm `.claude/CLAUDE.md` exists
-4. List workspace folder structure
+4. Confirm sample disposition is as the user chose
+5. List final workspace folder structure
 
 Report:
 
@@ -325,6 +386,8 @@ Report:
 **Version:** 2.0.0
 **Company files:** [list created/skipped]
 **Department folders:** [list created]
+**Samples:** [deleted / kept / converted to X, Y]
+**Skills:** [N installed, M removed]
 
 ### Manual steps remaining:
 1. [ ] Profile Preferences pasted (Settings > Profile)
@@ -332,7 +395,16 @@ Report:
 3. [ ] Scheduled tasks created (optional)
 
 ### What you can do now:
-- Ask Claude to create a new project
-- Ask Claude for a session briefing
+- Ask Claude to create a new project ("new project for X")
+- Ask Claude for a session briefing ("what am I working on")
 - Ask Claude to help with any business task -- it will read your company knowledge files automatically
+
+### Re-running setup:
+You can run this setup skill again at any time to:
+- Update your company knowledge files
+- Add department folders you skipped
+- Convert remaining sample projects/clients to real ones
+- Remove skills you no longer need
+
+Just say "run setup" or invoke the setup skill directly.
 ```

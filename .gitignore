@@ -1,5 +1,4 @@
 # Cowork Business OS .gitignore
-# Keep repository lightweight — heavy files stay on cloud storage
 
 # === System Files ===
 .DS_Store
@@ -8,58 +7,6 @@ desktop.ini
 *.swp
 *.swo
 *~
-
-# === Office Documents ===
-*.docx
-*.doc
-*.xlsx
-*.xls
-*.pptx
-*.ppt
-*.odt
-*.ods
-*.odp
-
-# === PDFs ===
-*.pdf
-
-# === Images ===
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.bmp
-*.tiff
-*.svg
-*.ico
-*.webp
-*.psd
-*.ai
-*.eps
-
-# === Audio/Video ===
-*.mp3
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.wav
-*.flac
-*.m4a
-*.wmv
-*.webm
-
-# === Archives ===
-*.zip
-*.rar
-*.7z
-*.tar
-*.gz
-*.tar.gz
-
-# === Large Data Files ===
-*.csv
-*.tsv
 
 # === Credentials & Secrets ===
 .env
@@ -90,10 +37,30 @@ logs/
 
 # === Node (if used) ===
 node_modules/
-package-lock.json
 
 # === Python (if used) ===
 __pycache__/
 *.pyc
 .venv/
 venv/
+
+# === Optional: heavy content types ===
+# Uncomment if you store large files in cloud storage (Google Drive, Dropbox, etc.)
+# rather than in the repo. Recommended for workspaces that sync across devices via git.
+#
+# *.docx
+# *.doc
+# *.xlsx
+# *.xls
+# *.pptx
+# *.ppt
+# *.pdf
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.mp3
+# *.mp4
+# *.mov
+# *.zip
+# *.csv

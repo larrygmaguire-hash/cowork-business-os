@@ -2,6 +2,8 @@
 
 Master workspace instructions for Cowork Business OS. Read this at the start of every task.
 
+For workspace structure conventions, naming rules, and how to build new skills or projects, see `.claude/FRAMEWORK.md`.
+
 ---
 
 ## Workspace Identity
@@ -315,9 +317,13 @@ Rules:
 
 ## Content Defaults
 
-- **Language:** [Set by /setup -- UK English or US English]
-- **Tone:** [Set by /setup -- e.g., professional but approachable]
-- **Formality:** [Set by /setup -- e.g., formal for client work, conversational for internal]
+Language, tone, and formality preferences are set in two places during `/setup`:
+
+- **Language and style** → Profile Preferences (Settings > Profile in Claude Desktop)
+- **Brand voice and tone** → `.claude/company/voice.md`
+
+Both are authoritative. Read `voice.md` before producing any content. Profile Preferences governs language direction (UK vs US English) and communication style.
+
 - Proofread all outputs before presenting
 - Use consistent terminology (see `.claude/company/industry.md`)
 - Follow brand guidelines (see `.claude/company/brand.md`)
