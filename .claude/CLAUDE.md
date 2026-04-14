@@ -45,8 +45,7 @@ If a file contains only placeholder text, ask the user or skip that context.
 │   └── Reports/               Generated reports
 ├── Archive/                    Completed or dormant projects
 ├── [Department folders]/       Optional (01 Finance, 02 HR, etc.)
-├── Infrastructure/Scripts/     Backup and validation scripts
-├── Scripts/                    Custom scripts
+├── Infrastructure/Scripts/     Backup and validation scripts (and any custom scripts)
 └── .claude/                    Configuration root
     ├── company/               Business context (6 files)
     ├── config/                Integration configuration

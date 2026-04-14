@@ -1,0 +1,16 @@
+{
+  "projectNumbering": {
+    "prefix": "P",
+    "separator": "",
+    "digits": 3
+  },
+  "cloudStorage": {
+    "primary": "",
+    "rootPath": ""
+  },
+  "calendar": {
+    "selectedCalendars": [],
+    "provider": ""
+  },
+  "thirdParty": {}
+}

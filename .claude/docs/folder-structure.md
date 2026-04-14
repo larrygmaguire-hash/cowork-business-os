@@ -11,8 +11,8 @@
 | `Documentation/Reports/` | Generated reports and analyses. |
 | `Archive/` | Completed or dormant projects. Move here instead of deleting. |
 | `Infrastructure/` | System scripts and configuration. |
-| `Infrastructure/Scripts/prima/` | State backup and validation scripts. |
-| `Scripts/` | Custom scripts for your specific workflows. |
+| `Infrastructure/Scripts/prima/` | State backup and validation scripts (template-managed). |
+| `Infrastructure/Scripts/` | Custom scripts go here alongside the template-managed `prima/` subfolder. |
 
 ## Department Folders (Optional)
 

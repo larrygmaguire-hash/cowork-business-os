@@ -316,8 +316,7 @@ your-business-name/
 │   └── Reports/               Generated reports
 ├── Archive/                    Completed or dormant projects
 ├── [Department folders]        Optional (01 Finance, 02 HR, 03 Sales, etc.)
-├── Infrastructure/Scripts/     Backup and validation scripts
-├── Scripts/                    Custom scripts
+├── Infrastructure/Scripts/     Backup and validation scripts (custom scripts go here too)
 └── .claude/                    Configuration root
     ├── CLAUDE.md              Master workspace instructions
     ├── FRAMEWORK.md           Component reference
