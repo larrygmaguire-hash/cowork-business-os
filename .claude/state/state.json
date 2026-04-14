@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "workspace": {
+    "name": "",
+    "id": "",
+    "type": "personal",
+    "githubRepo": "",
+    "created": ""
+  },
+  "nextProjectNumber": 1,
+  "projects": [],
+  "sessionHistory": [],
+  "recentWork": [],
+  "priorities": {
+    "immediate": [],
+    "thisWeek": [],
+    "upcoming": []
+  },
+  "pendingItems": [],
+  "selectedCalendars": []
+}

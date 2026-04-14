@@ -1,0 +1,99 @@
+# Cowork Business OS .gitignore
+# Keep repository lightweight — heavy files stay on cloud storage
+
+# === System Files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# === Office Documents ===
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.pptx
+*.ppt
+*.odt
+*.ods
+*.odp
+
+# === PDFs ===
+*.pdf
+
+# === Images ===
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+*.webp
+*.psd
+*.ai
+*.eps
+
+# === Audio/Video ===
+*.mp3
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
+*.flac
+*.m4a
+*.wmv
+*.webm
+
+# === Archives ===
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.tar.gz
+
+# === Large Data Files ===
+*.csv
+*.tsv
+
+# === Credentials & Secrets ===
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+**/credentials/
+**/secrets/
+
+# === Claude Local Settings ===
+.claude/settings.local.json
+.claude/credentials.json
+.claude/*.local.md
+
+# === State Backups ===
+.claude/state.backups/
+
+# === IDE/Editor ===
+.vscode/settings.json
+.idea/
+*.sublime-*
+
+# === Logs ===
+*.log
+logs/
+
+# === Node (if used) ===
+node_modules/
+package-lock.json
+
+# === Python (if used) ===
+__pycache__/
+*.pyc
+.venv/
+venv/

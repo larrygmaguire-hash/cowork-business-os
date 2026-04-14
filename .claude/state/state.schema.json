@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cowork Business OS State",
+  "description": "Project state file schema v2.0.0",
+  "type": "object",
+  "required": ["version", "workspace", "projects"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the state schema"
+    },
+    "workspace": {
+      "type": "object",
+      "required": ["name", "id"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Human-readable workspace name"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "URL-safe workspace identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["personal", "client", "internal"],
+          "description": "personal = owner's workspace, client = client workspace, internal = non-client project"
+        },
+        "githubRepo": {
+          "type": "string",
+          "description": "GitHub repo in org/repo format. Empty string if no remote."
+        },
+        "created": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the workspace was created"
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status", "category"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^P\\d{3}$",
+            "description": "Stable ID. Format: P + 3-digit zero-padded number (P001-P999). Never reused."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["in-progress", "paused", "overdue", "archived"]
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low"]
+          },
+          "category": {
+            "type": "string",
+            "enum": ["client", "product", "internal", "marketing", "research", "operations", "finance", "sales", "legal", "it"]
+          },
+          "tags": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "created": {
+            "type": "string",
+            "format": "date"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "dueDate": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "lastWorked": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "path": {
+            "type": ["string", "null"],
+            "description": "Relative path to project folder within workspace"
+          },
+          "companyName": {
+            "type": ["string", "null"],
+            "description": "Client company name. Required for client category projects."
+          },
+          "contacts": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "taskCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tasksDone": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tasksBlocked": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "milestoneCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "milestonesDone": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "nextProjectNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sessionHistory": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["date", "summary"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "time": {
+            "type": "string",
+            "pattern": "^\\d{2}:\\d{2}$"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "projectsWorked": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^P\\d{3}$"
+            }
+          }
+        }
+      }
+    },
+    "priorities": {
+      "type": "object",
+      "properties": {
+        "immediate": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "thisWeek": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "upcoming": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "pendingItems": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "recentWork": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "selectedCalendars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"}
+        }
+      }
+    }
+  }
+}
