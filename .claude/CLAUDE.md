@@ -40,8 +40,7 @@ If a file contains only placeholder text, ask the user or skip that context.
 ├── Projects/                   Active projects (P### Project Name/)
 ├── Clients/                    Client work (C### Client Name/)
 ├── Documentation/
-│   ├── Templates/             Reusable document templates
-│   └── Reports/               Generated reports
+│   └── Reports/               Generated reports and analyses
 ├── Archive/                    Completed or dormant projects
 ├── [Department folders]/       Optional (01 Finance, 02 HR, etc.)
 ├── Infrastructure/Scripts/     Backup and validation scripts (and any custom scripts)
@@ -67,7 +66,6 @@ Never create files in the workspace root. Place in appropriate subfolders.
 | Project work | `Projects/P### Project Name/` |
 | Client work | `Clients/[Client Name]/` |
 | Recurring workflows | `Projects/Workflows/` |
-| Templates | `Documentation/Templates/` |
 | Reports and analyses | `Documentation/Reports/` |
 | Completed projects | `Archive/P### Project Name/` |
 | Financial records | `01 Finance/` |

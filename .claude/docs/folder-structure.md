@@ -7,7 +7,6 @@
 | `Projects/` | Active internal projects. One subfolder per project, named `P### Project Name` (e.g., `P001 Website Redesign`). Every project folder should contain a `CLAUDE.md` with project-specific context. |
 | `Clients/` | Client work. One subfolder per client, named `C### Client Name`. Each client folder contains `Projects/`, `Communications/`, `Contracts/`. |
 | `Documentation/` | Shared reference materials, templates, and reports. |
-| `Documentation/Templates/` | Reusable document templates (proposals, reports, briefs). |
 | `Documentation/Reports/` | Generated reports and analyses. |
 | `Archive/` | Completed or dormant projects. Move here instead of deleting. |
 | `Infrastructure/` | System scripts and configuration. |

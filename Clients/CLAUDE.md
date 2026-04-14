@@ -12,7 +12,8 @@ This folder holds your client and customer work. Each client gets its own subfol
 
 Every client folder contains:
 
-- `CLAUDE.md` -- client-specific context (background, contacts, communication preferences, engagement history)
+- `CLAUDE.md` -- operational context for Cowork (where things are, naming conventions, current engagement status)
+- `PRD.md` -- the full client profile: company snapshot, products and services, leadership and key contacts, decision-making structure, communication preferences, brand voice, industry context, things to know, things to avoid. Skills read this before producing any client-facing work.
 - `Projects/` -- client projects (each numbered P###, registered in state.json)
 - `Communications/` -- emails, meeting notes, correspondence
 - `Contracts/` -- engagement letters, statements of work, signed agreements

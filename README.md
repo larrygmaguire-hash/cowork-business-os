@@ -311,8 +311,7 @@ your-business-name/
 ├── Projects/                   Active projects (P### Project Name/)
 ├── Clients/                    Client work (C### Client Name/)
 ├── Documentation/
-│   ├── Templates/             Reusable document templates
-│   └── Reports/               Generated reports
+│   └── Reports/               Generated reports and analyses
 ├── Archive/                    Completed or dormant projects
 ├── [Department folders]        Optional (01 Finance, 02 HR, 03 Sales, etc.)
 ├── Infrastructure/Scripts/     Backup and validation scripts (custom scripts go here too)

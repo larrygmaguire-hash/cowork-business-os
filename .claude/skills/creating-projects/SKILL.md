@@ -1,190 +1,189 @@
 ---
 name: creating-projects
 description: >
-  Create a new project with standardised folder structure, CLAUDE.md context file, and project detail tracking. Registers project in state.json and generates PRD template.
+  Create a new project with sequential P### ID, standardised folder structure (Research/Drafts/Final), CLAUDE.md operational context, and PRD.md project requirements document. Registers project in state.json. Use when the user wants to start a new internal project or a new client project.
 ---
 
 # Creating Projects
 
-Create a new project with consistent structure and metadata.
+Create a new project with consistent structure, CLAUDE.md, and PRD.md.
 
-## Step 1: Gather Project Details
+## Step 1: Determine Location
 
-Ask the following questions **one at a time** (do not batch):
+Ask: "Is this an internal project or a client project?"
 
-1. What is the goal? (One sentence — what does success look like?)
-2. Who is it for? (Client, audience, internal)
-3. What does done look like? (Specific deliverables)
-4. What is the timeline? (Deadline or ongoing?)
-5. What already exists? (Prior work, materials, references)
-6. Project name?
-7. Which category? (See options in Step 2a)
+- **Internal:** project will live in `Projects/`
+- **Client:** ask which client (show C### list from state.json). Project lives in `Clients/C### Client Name/Projects/`.
 
-If user provided a name with initial input (e.g., "creating-projects Website Redesign"), use that for question 6 and skip ahead.
+## Step 2: Gather Project Details
 
-## Step 2: Choose Category, Tags, and Subfolders
+Ask these questions one at a time. Wait for each answer before asking the next.
 
-### 2a: Category Selection
+1. **Project name** (required)
+2. **Category** -- pick one:
+   - `client`, `product`, `internal`, `marketing`, `research`, `operations`, `finance`, `sales`, `legal`, `it`
+3. **Priority** -- `critical`, `high`, `medium`, `low` (default: medium)
+4. **Due date** (optional, format YYYY-MM-DD)
+5. **One-sentence project goal** (used in PRD)
+6. **Primary deliverables** (1-3 specific outputs, used in PRD)
+7. **Stakeholders** (sponsor, owner, reviewer -- used in PRD)
+8. **Tags** (optional, comma-separated)
 
-Present these options:
-
-| # | Category | Description |
-|---|----------|-------------|
-| 1 | Client | Client engagements, deployments |
-| 2 | Product | Software, courses, offerings |
-| 3 | Internal | Business processes, tooling |
-| 4 | Marketing | Campaigns, launches |
-| 5 | Research | Academic, investigation |
-| 6 | Operations | Compliance, admin |
-| 7 | Finance | Financial tools, budgets |
-| 8 | Sales | Sales processes, proposals |
-| 9 | Legal | Contracts, IP, regulatory |
-| 10 | IT | Systems, servers, infrastructure |
-
-Ask: "Which category fits? Pick a number."
-
-Store as lowercase (`client`, `product`, etc.) in the project object.
-
-### 2b: Tags (Optional)
-
-Present seed list:
-
-```
-automation · integration · compliance · training · reporting · procurement
-hr · crm · content · strategy · website · events · infrastructure
-documentation · customer-support
-```
-
-Ask: "Add tags? (comma-separated, or skip)"
-
-Store tags lowercase, hyphenated.
-
-### 2c: Default Subfolders
-
-For the selected category, present defaults:
-
-| Category | Default Subfolders |
-|----------|-------------------|
-| Client | `Deliverables/`, `Internal/` |
-| Product | `Design/`, `Development/` |
-| Internal | `Docs/` |
-| Marketing | `Campaigns/`, `Assets/` |
-| Research | `Notes/`, `Sources/` |
-| Operations | `Docs/` |
-| Finance | `Reports/`, `Records/` |
-| Sales | `Proposals/`, `Pipeline/` |
-| Legal | `Contracts/`, `Compliance/` |
-| IT | `Docs/` |
-
-Ask: "Create these subfolders? (accept/customise)"
-
-If customise: ask for comma-separated list.
-
-## Step 3: Project ID Generation
+## Step 3: Assign Next P### ID
 
 Read `.claude/state/state.json`:
+- Read `nextProjectNumber`
+- Read `projectNumbering` from `.claude/config/integrations.json` (defaults: prefix `P`, separator `""`, digits `3`)
+- Generate ID: `{prefix}{separator}{number zero-padded to digits}` -- default `P001`, `P002`, ...
 
-1. Check `projectNumbering.prefix` (default: `P`)
-2. Check `projectNumbering.separator` (default: `""` — empty string)
-3. Check `projectNumbering.digits` (default: `3`)
-4. Read `nextProjectNumber` (if missing: count existing projects + 1)
-
-Generate ID: `{prefix}{separator}{number zero-padded to digits}`
-
-Example: `P001`, `PRJ-0001`
-
-Folder name: `{ID} {Project Name}` (e.g., `P004 Website Redesign`)
+If `nextProjectNumber` is missing, count existing entries in `projects` array + 1.
 
 ## Step 4: Create Folder Structure
 
-Create in `Projects/`:
+Create the project folder at the location determined in Step 1:
 
+For internal projects:
 ```
-Projects/{ID} {Project Name}/
+Projects/P### Project Name/
 ├── CLAUDE.md
 ├── PRD.md
-└── [subfolders from Step 2c]
+├── Research/
+├── Drafts/
+└── Final/
 ```
+
+For client projects:
+```
+Clients/C### Client Name/Projects/P### Project Name/
+├── CLAUDE.md
+├── PRD.md
+├── Research/
+├── Drafts/
+└── Final/
+```
+
+Subfolders do NOT have CLAUDE.md files. Only the top-level project folder does.
 
 ## Step 5: Generate CLAUDE.md
 
+Create `[project path]/CLAUDE.md` with operational context only:
+
 ```markdown
-# {Project Name} — Claude Context
+# P### Project Name
 
-> This project inherits all rules from the master CLAUDE.md.
+## Project context
 
-## Project Overview
+- **ID:** P###
+- **Category:** [category]
+- **Status:** in-progress
+- **Created:** [today's date]
+- **Client:** [Client name if client project, otherwise omit]
 
-**Project ID:** {ID}
-**Category:** [Category]
-**Status:** In Progress
-**Created:** [YYYY-MM-DD]
+## Files in this folder
 
-[Purpose statement from Step 1]
+- `CLAUDE.md` -- this file. Operational context for Cowork.
+- `PRD.md` -- Project Requirements Document. Full project specification (scope, deliverables, stakeholders, milestones, constraints). Read this for the project specification.
 
-## Project Reference
+## Subfolders
 
-See [PRD.md](PRD.md) for requirements and build phases.
+- `Research/` -- background reading, references, source materials
+- `Drafts/` -- work in progress
+- `Final/` -- completed deliverables
 
-## Rules
+## Project specification
 
-Standard master rules apply.
+See `PRD.md` for full project requirements.
 
-## Skills
+## Current state
 
-No project-specific skills required.
+[Initial state notes -- can be brief, will be updated by session-close]
 
 ## Conventions
 
-Follow master conventions.
+[Any project-specific naming, formatting, or process rules that override workspace defaults]
 ```
 
 ## Step 6: Generate PRD.md
 
-Create a basic PRD template populated from Step 1 answers:
+Create `[project path]/PRD.md` with structured requirements populated from Step 2 answers:
 
 ```markdown
-# Product Requirements Document — {Project Name}
+# P### Project Name -- Project Requirements Document
 
-**Project ID:** {ID}
-**Version:** 1.0
-**Created:** [YYYY-MM-DD]
+## Project summary
 
-## Problem Statement
+[Goal from Step 2 question 5]
 
-[Derived from goal and audience]
+## Goals and success criteria
 
-## Goals
+| Goal | Success criterion |
+|------|-------------------|
+| [Primary goal from Step 2.5] | [How you will know this is achieved] |
 
-[From Step 1, question 1]
+## Scope
 
-## Target Users
+### In scope
+- [Derived from deliverables and goal]
 
-[From Step 1, question 2]
+### Out of scope
+- [TBD -- ask user to fill in]
 
-## Requirements (Must Have)
+## Deliverables
 
-[From Step 1, question 3 — specific deliverables]
+| Deliverable | Format | Owner | Due date |
+|-------------|--------|-------|----------|
+| [From Step 2.6] | [Document / Spreadsheet / Presentation / Other] | [TBD] | [Step 2.4 due date] |
+
+## Stakeholders
+
+| Role | Name | Responsibility |
+|------|------|----------------|
+| Sponsor | [From Step 2.7] | Approves scope and budget |
+| Owner | [From Step 2.7] | Day-to-day decisions |
+| Reviewer | [From Step 2.7] | Approves deliverables before release |
 
 ## Constraints
 
-Timeline: [From Step 1, question 4]
+- **Deadline:** [Step 2.4]
+- **Budget:** [TBD]
+- **Approvals required:** [TBD]
+- **Dependencies:** [TBD]
 
-Existing resources: [From Step 1, question 5]
+## Milestones
 
-## Build Phases
+| Milestone | Date | Notes |
+|-----------|------|-------|
+| Kickoff | [Today's date] | Project created |
+| First draft | [TBD] | |
+| Final delivery | [Step 2.4] | |
 
-[Ordered by dependency]
+## Approach
 
-## Success Criteria
+[TBD -- describe approach when ready]
 
-[Measurable outcomes from the goal]
+## Risks and mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| [TBD] | [TBD] | [TBD] | [TBD] |
+
+## Decisions log
+
+| Date | Decision | Rationale |
+|------|----------|-----------|
+| [Today] | Project created | [Brief context from Step 2.5] |
+
+## References
+
+- Source materials: see `Research/`
+- Brand and voice: see `.claude/company/voice.md` and `.claude/company/brand.md`
+- [If client project]: see `../../CLAUDE.md` and `../../PRD.md` for client context
 ```
 
-Present for review:
+Present for review using the Review checkpoint:
 
 ```
-**Review:** PRD generated for {ID} {Project Name}
+**Review:** PRD generated for P### Project Name
 
 [Show full PRD]
 
@@ -193,29 +192,27 @@ Present for review:
 
 If "Add detail later": mark [TBD] sections and proceed.
 
-If "Revise": apply changes and re-present.
+## Step 7: Update state.json
 
-## Step 7: Register in State
-
-If `.claude/state/state.json` exists and is valid:
-
-1. Backup: `bash Infrastructure/Scripts/prima/backup-state.sh`
+1. Backup: run `Infrastructure/Scripts/prima/backup-state.sh`
 2. Read state.json
 3. Append to `projects` array:
 
 ```json
 {
-  "id": "{ID}",
-  "name": "{Project Name}",
-  "description": "{One-line from Step 1}",
+  "id": "P###",
+  "name": "Project Name",
   "status": "in-progress",
-  "priority": "medium",
-  "created": "[YYYY-MM-DD]",
-  "dueDate": "[deadline or null]",
-  "lastWorked": "[YYYY-MM-DD]",
-  "category": "[category-lowercase]",
-  "tags": "[selected tags or empty array]",
-  "path": "Projects/{ID} {Project Name}",
+  "priority": "[from Step 2.3]",
+  "category": "[from Step 2.2]",
+  "tags": ["[from Step 2.8]"],
+  "created": "[today]",
+  "startDate": "[today]",
+  "dueDate": "[from Step 2.4 or null]",
+  "lastWorked": "[today]",
+  "path": "[full path]",
+  "companyName": "[client name or null]",
+  "contacts": [],
   "taskCount": 0,
   "tasksDone": 0,
   "tasksBlocked": 0,
@@ -225,52 +222,54 @@ If `.claude/state/state.json` exists and is valid:
 ```
 
 4. Increment `nextProjectNumber`
-5. Write state.json
-6. Validate: `bash Infrastructure/Scripts/prima/validate-state.sh`
-
-If state.json missing or invalid, warn user but continue.
+5. Validate: run `Infrastructure/Scripts/prima/validate-state.sh`
+6. If validation fails, restore from `.claude/state.backups/`
 
 ## Step 8: Create Project Detail File
 
-Create `.claude/state/projects/{ID}.json`:
+Create `.claude/state/projects/P###.json`:
 
 ```json
 {
-  "id": "{ID}",
-  "name": "{Project Name}",
+  "id": "P###",
+  "description": "[1-2 sentence project description from Step 2.5]",
+  "notes": "",
   "stoppedAt": null,
   "lastAction": "Project created",
   "pausedReason": null,
-  "sessionHistory": [{
-    "date": "[YYYY-MM-DD]",
-    "summary": "Project created"
-  }]
+  "sessionHistory": [
+    {
+      "date": "[today]",
+      "summary": "Project created"
+    }
+  ],
+  "milestones": [],
+  "todos": [],
+  "recentWork": []
 }
 ```
 
 ## Step 9: Confirmation
 
 ```
-**Project Created**
+**Project created**
 
-**ID:** {ID}
-**Location:** Projects/{ID} {Project Name}/
-
-Files:
-- CLAUDE.md
-- PRD.md
-
-Subfolders:
-- [list created subfolders]
-
-Registered in state.json.
+- ID: P###
+- Folder: [full path]
+- Files: CLAUDE.md, PRD.md
+- Subfolders: Research/, Drafts/, Final/
+- Registered in state.json with detail file at .claude/state/projects/P###.json
 
 **Next steps:**
-- Review PRD.md and refine detail
-- Add materials to subfolders
-- Begin work when ready
+- Review and refine PRD.md
+- Add source materials to Research/
+- Begin work in Drafts/
 ```
 
----
+## Workflow Notes
 
-Begin by gathering project details one question at a time.
+- Project IDs (P001, P002, ...) are sequential and never reused
+- The same P### ID is used for internal and client projects (one shared number space, registered in the same `projects` array in state.json)
+- The `path` field in state.json distinguishes internal from client projects
+- Subfolders inside a project (Research/, Drafts/, Final/) do NOT get CLAUDE.md
+- When a project is complete, move the entire folder to `Archive/` and update status to `archived` in state.json

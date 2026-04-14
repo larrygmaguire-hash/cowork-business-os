@@ -5,23 +5,12 @@ Placeholder client. Delete or replace when you onboard real clients.
 ## Client context
 
 - **ID:** C001
-- **Name:** Sample Client (placeholder)
-- **Industry:** [Industry]
-- **Engagement type:** [retainer / project-based / hourly]
-- **Status:** sample
+- **Status:** sample (not tracked in state.json)
 
-## Primary contacts
+## Files in this folder
 
-| Name | Role | Email | Notes |
-|------|------|-------|-------|
-| [Contact Name] | [Role] | [email] | [Notes] |
-
-## Communication preferences
-
-- **Preferred channel:** [Email / Slack / Phone / Other]
-- **Response time:** [e.g., within 24 hours]
-- **Tone:** [Formal / Friendly / Technical]
-- **Cadence:** [e.g., weekly status updates]
+- `CLAUDE.md` -- this file. Operational context for Cowork.
+- `PRD.md` -- full client profile (company snapshot, products, leadership, communication preferences, brand voice, industry context, things to know). Read this before producing any client-facing work.
 
 ## Subfolders
 
@@ -29,20 +18,10 @@ Placeholder client. Delete or replace when you onboard real clients.
 - `Communications/` -- emails, meeting notes, correspondence
 - `Contracts/` -- engagement letters, statements of work, signed agreements
 
-## Engagement history
+## Client specification
 
-| Date | Activity | Notes |
-|------|----------|-------|
-| [YYYY-MM-DD] | Initial engagement | [Notes] |
+See `PRD.md` for the full client profile. This CLAUDE.md captures operational context only -- where things are, naming conventions, current engagement status.
 
 ## What to put in this CLAUDE.md when you onboard a real client
 
-The `creating-clients` skill generates this CLAUDE.md and asks you for:
-
-- Client name and industry
-- Primary contacts (name, role, email)
-- Communication preferences
-- Engagement type and rough scope
-- Any client-specific conventions
-
-Update the file as the engagement develops.
+The `creating-clients` skill generates this CLAUDE.md and the accompanying PRD.md. The CLAUDE.md is short -- operational only. The PRD.md is the rich profile document that skills read before producing client work.

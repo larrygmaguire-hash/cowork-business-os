@@ -5,16 +5,12 @@ Placeholder client. Delete or replace when you onboard real clients.
 ## Client context
 
 - **ID:** C004
-- **Name:** Sample Client (placeholder)
-- **Industry:** [Industry]
-- **Engagement type:** [retainer / project-based / hourly]
-- **Status:** sample
+- **Status:** sample (not tracked in state.json)
 
-## Primary contacts
+## Files in this folder
 
-| Name | Role | Email | Notes |
-|------|------|-------|-------|
-| [Contact Name] | [Role] | [email] | [Notes] |
+- `CLAUDE.md` -- this file. Operational context for Cowork.
+- `PRD.md` -- full client profile. Read this before producing any client-facing work.
 
 ## Subfolders
 
@@ -22,4 +18,6 @@ Placeholder client. Delete or replace when you onboard real clients.
 - `Communications/` -- emails, meeting notes, correspondence
 - `Contracts/` -- engagement letters, statements of work, signed agreements
 
-When the `creating-clients` skill creates a real client, this CLAUDE.md is populated with full contact details, communication preferences, and engagement history.
+## Client specification
+
+See `PRD.md` for the full client profile.

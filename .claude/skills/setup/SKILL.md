@@ -207,7 +207,7 @@ Create missing directories. Do not overwrite existing ones.
 
 **Always create:**
 - `Projects/`, `Archive/`, `Clients/`
-- `Documentation/`, `Documentation/Templates/`, `Documentation/Reports/`
+- `Documentation/`, `Documentation/Reports/`
 - `Infrastructure/`, `Infrastructure/Scripts/`, `Infrastructure/Scripts/prima/`
 - `.claude/state/`, `.claude/state/projects/`
 - `.claude/company/`, `.claude/config/`, `.claude/docs/`

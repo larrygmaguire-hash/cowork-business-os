@@ -41,17 +41,28 @@ When to create a new skill:
 Discrete bodies of work. Each has a P### ID assigned sequentially by the `creating-projects` skill.
 
 Every project folder contains:
-- `CLAUDE.md` -- project-specific context (scope, deliverables, constraints)
-- Whatever working files the project needs
+- `CLAUDE.md` -- operational context for Cowork (current state, conventions)
+- `PRD.md` -- Project Requirements Document (scope, goals, deliverables, stakeholders, milestones, constraints)
+- `Research/` -- background reading, references, source materials
+- `Drafts/` -- work in progress
+- `Final/` -- completed deliverables
 
-The project's state (description, stoppedAt, lastAction, sessionHistory) lives in `.claude/state/projects/P###.json`.
+Subfolders do NOT have CLAUDE.md files. Only the project-level folder does.
 
-### Client folders (`Clients/[Client Name]/`)
+The project's tracked state (description, stoppedAt, lastAction, sessionHistory) lives in `.claude/state/projects/P###.json`.
 
-Customer or external relationship folders. Contains:
-- `CLAUDE.md` -- client-specific context (background, contacts, preferences)
-- Contact details
-- Sub-projects (if any) in their own P### folders
+### Client folders (`Clients/C### Client Name/`)
+
+Customer or external relationship folders. Each has a C### ID assigned sequentially by the `creating-clients` skill.
+
+Every client folder contains:
+- `CLAUDE.md` -- operational context for Cowork (where things are, conventions, current engagement status)
+- `PRD.md` -- the full client profile (company snapshot, products, leadership, communication preferences, brand voice, industry context, things to know). Skills read this before producing client-facing work.
+- `Projects/` -- client projects (each P### gets a folder here, registered in state.json)
+- `Communications/` -- emails, meeting notes, correspondence
+- `Contracts/` -- engagement letters, statements of work, signed agreements
+
+Subfolders do NOT have CLAUDE.md files. Only the client-level folder does.
 
 ### Department folders (`01 Finance/`, `02 Human Resources/`, etc.)
 
@@ -70,10 +81,6 @@ Optional. Created by the `/setup` wizard based on user choice. Numbered `01`-`07
 Subfolders use decimal suffixes (`01.1 Accounts Payable`, `01.2 Accounts Receivable`). Gaps are acceptable -- do not renumber after removing a subfolder.
 
 Each department folder has its own `CLAUDE.md` with domain-specific guidance.
-
-### Templates (`Documentation/Templates/`)
-
-Reusable document templates. Not skills, not projects -- just files you copy when starting similar work.
 
 ---
 

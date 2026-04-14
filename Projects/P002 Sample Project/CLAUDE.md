@@ -7,10 +7,17 @@ Placeholder project. Delete or replace when you start using the workspace.
 - **ID:** P002
 - **Status:** sample (not tracked in state.json)
 
+## Files in this folder
+
+- `CLAUDE.md` -- this file. Operational context for Cowork.
+- `PRD.md` -- Project Requirements Document. Full project specification.
+
 ## Subfolders
 
 - `Research/` -- background reading, references, source materials
 - `Drafts/` -- work in progress
 - `Final/` -- completed deliverables
 
-When the `creating-projects` skill creates a real project, this CLAUDE.md is populated with scope, deliverables, stakeholders, constraints, and current state.
+## Project specification
+
+See `PRD.md` for the full project requirements.

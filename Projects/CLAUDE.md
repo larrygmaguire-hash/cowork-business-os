@@ -12,7 +12,8 @@ This folder holds your active internal projects. Each project gets its own subfo
 
 Every project folder contains:
 
-- `CLAUDE.md` -- project-specific context (scope, deliverables, conventions, current state). Inherits from the workspace `.claude/CLAUDE.md`.
+- `CLAUDE.md` -- operational context for Cowork (current state, conventions, where things are). Inherits from the workspace `.claude/CLAUDE.md`.
+- `PRD.md` -- Project Requirements Document. The full project specification: scope, goals, deliverables, stakeholders, milestones, constraints, risks, decisions log. Read this for the project specification; CLAUDE.md only covers operational context.
 - `Research/` -- background reading, references, source materials
 - `Drafts/` -- work in progress
 - `Final/` -- completed deliverables
