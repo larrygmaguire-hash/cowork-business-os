@@ -1,0 +1,10 @@
+{
+  "name": "prima-memory",
+  "version": "0.1.0",
+  "description": "Session history recall for Cowork. Searchable access to past conversations via a pre-built index. Ask what you worked on last week and get real answers.",
+  "author": { "name": "Larry G. Maguire" },
+  "homepage": "https://github.com/larrygmaguire-hash/cowork-business-os",
+  "repository": "https://github.com/larrygmaguire-hash/cowork-business-os",
+  "license": "MIT",
+  "keywords": ["prima", "memory", "session-history", "recall", "cowork"]
+}

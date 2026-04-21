@@ -1,0 +1,31 @@
+{
+  "name": "cowork-business-os",
+  "owner": { "name": "Larry G. Maguire" },
+  "description": "Cowork Business OS — a working operating system for running your business inside the Claude Desktop app. Core plugin plus PRIMA add-ons for project management, session memory, and academic research.",
+  "plugins": [
+    {
+      "name": "cowork-business-os",
+      "source": "./cowork-business-os",
+      "description": "Core plugin for Cowork Business OS. Scaffolds a new business workspace on your computer and ships the content-production skills used across every task. Required for PRIMA Project Management. Recommended for all users.",
+      "author": { "name": "Larry G. Maguire" }
+    },
+    {
+      "name": "prima-project-management",
+      "source": "./prima-project-management",
+      "description": "Project tracking and session lifecycle for Cowork Business OS. Daily briefing, session close, project and client creation, milestone and task tracking, state management across your whole business.",
+      "author": { "name": "Larry G. Maguire" }
+    },
+    {
+      "name": "prima-memory",
+      "source": "./prima-memory",
+      "description": "Session history recall for Cowork. Searchable access to your past Cowork conversations through a pre-built index. Ask what you worked on last week and get real answers.",
+      "author": { "name": "Larry G. Maguire" }
+    },
+    {
+      "name": "prima-scholar",
+      "source": "./prima-scholar",
+      "description": "Academic research and citation management for Cowork. Search PubMed, arXiv, Semantic Scholar, and CrossRef. Manage a local research library. Write with proper APA7 citations.",
+      "author": { "name": "Larry G. Maguire" }
+    }
+  ]
+}
