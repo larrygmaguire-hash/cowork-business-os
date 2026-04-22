@@ -1,0 +1,6 @@
+{
+  "name": "processing-zoom-meetings",
+  "version": "1.0.0",
+  "description": "Process Zoom meetings — fetch summaries, pull transcripts, download recordings, export registrants",
+  "author": "Larry G. Maguire"
+}

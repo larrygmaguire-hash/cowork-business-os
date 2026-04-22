@@ -1,0 +1,6 @@
+{
+  "name": "processing-session-transcripts",
+  "version": "1.0.0",
+  "description": "Process client session VTT transcripts into structured summaries",
+  "author": "Larry G. Maguire"
+}
