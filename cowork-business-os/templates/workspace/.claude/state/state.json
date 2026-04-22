@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "workspace": {
+    "name": "[COMPANY_NAME]",
+    "id": "[workspace-id]",
+    "type": "client",
+    "githubRepo": ""
+  },
+  "nextProjectNumber": 1,
+  "projects": [],
+  "sessionHistory": [],
+  "priorities": {
+    "immediate": [],
+    "thisWeek": [],
+    "upcoming": []
+  },
+  "pendingItems": [],
+  "recentWork": [],
+  "selectedCalendars": []
+}

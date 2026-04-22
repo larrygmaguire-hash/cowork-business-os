@@ -1,0 +1,109 @@
+{
+  "_comment": "AI Business OS — Workspace Integrations Configuration",
+  "_instructions": "This file is populated by /setup during initial workspace configuration.",
+  "_version": "1.0",
+
+  "client": {
+    "name": "[Company Name]",
+    "deploymentDate": "YYYY-MM-DD",
+    "setupBy": "[Your Name]",
+    "os": "macos | windows | linux",
+    "primaryMachine": {
+      "username": "[client-username]",
+      "homeDir": "[/Users/username or C:\\Users\\username]"
+    }
+  },
+
+  "calendar": {
+    "_comment": "Calendar integration for /day morning briefing",
+    "provider": "google-calendar | outlook-calendar | apple-calendar | notion-calendar | none",
+    "mcp": "gcal | outlook | apple-calendar | notion | null",
+    "enabled": true,
+    "access": "read-only | read-write",
+    "calendarNames": ["Work", "Personal"],
+    "notes": ""
+  },
+
+  "email": {
+    "_comment": "Email integration (optional — not required for PRIMA core functionality)",
+    "provider": "gmail | outlook | apple-mail | proton | none",
+    "mcp": "gmail | outlook | proton | null",
+    "enabled": false,
+    "access": "read-only | read-write",
+    "primaryEmail": "client@example.com",
+    "notes": "No email MCP available for Apple Mail — graceful degradation"
+  },
+
+  "meetings": {
+    "_comment": "Video meeting integration for upcoming meetings display",
+    "provider": "zoom | teams | meet | none",
+    "mcp": "zoom | teams | meet | null",
+    "enabled": true,
+    "access": "read-only",
+    "notes": ""
+  },
+
+  "storage": {
+    "_comment": "Cloud storage location for heavy files (PDFs, Office docs)",
+    "provider": "google-drive | onedrive | dropbox | icloud-drive | local-only",
+    "path": "[Full path to synced folder]",
+    "enabled": true,
+    "syncStatus": "always-synced | selective-sync | on-demand",
+    "notes": ""
+  },
+
+  "collaboration": {
+    "_comment": "Team collaboration tools already in use",
+    "slack": {
+      "enabled": false,
+      "workspace": "",
+      "notificationChannel": ""
+    },
+    "teams": {
+      "enabled": false,
+      "teamName": ""
+    },
+    "other": []
+  },
+
+  "projectNumbering": {
+    "_comment": "How project IDs are generated. Prefix + zero-padded number. Folder names become 'P001 Project Name'. Change prefix and digits to match your conventions (e.g., 'PRJ-' with 4 digits = 'PRJ-0001 Project Name').",
+    "prefix": "P",
+    "separator": "",
+    "digits": 3,
+    "examples": ["P001", "P002", "P003"]
+  },
+
+  "projectManagement": {
+    "_comment": "Existing project management tools (for potential future integration)",
+    "tools": [],
+    "notes": "Client currently tracks projects manually"
+  },
+
+  "security": {
+    "_comment": "Security and compliance requirements",
+    "authMethod": "oauth | api-key",
+    "dataResidency": "",
+    "compliance": [],
+    "backupFrequency": "daily | weekly | none"
+  },
+
+  "features": {
+    "_comment": "PRIMA features to enable based on client needs",
+    "morningBriefing": true,
+    "sessionClose": true,
+    "projectTracking": true,
+    "calendarIntegration": true,
+    "emailIntegration": false,
+    "slackNotifications": false,
+    "autoInference": false
+  },
+
+  "deployment": {
+    "_comment": "Deployment metadata for support and troubleshooting",
+    "version": "1.0",
+    "templateSource": "ai-business-os",
+    "customisations": [],
+    "deploymentNotes": ""
+  }
+}
