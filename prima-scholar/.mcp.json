@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "prima-scholar-search": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/scholar-search/build/index.js"],
+      "env": {}
+    },
+    "prima-scholar-library": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/scholar-library/build/index.js"],
+      "env": {}
+    }
+  }
+}
