@@ -35,6 +35,11 @@ secrets.json
 *.log
 logs/
 
+# === Build artefacts (plugin packaging) ===
+.build/
+release-artefacts/
+*.plugin
+
 # === Node (if used) ===
 node_modules/
 
