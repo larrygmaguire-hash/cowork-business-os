@@ -1,8 +1,12 @@
 {
   "name": "cowork-business-os",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "description": "Core plugin for Cowork Business OS. Creates a new business workspace on your computer and provides the content-production skills (copywriting, documents, spreadsheets, presentations, PDFs, email, meetings) used across every task. Required for PRIMA Project Management.",
-  "author": { "name": "Larry G. Maguire" },
+  "author": {
+    "name": "Larry G. Maguire",
+    "email": "larrygmaguire@pm.me",
+    "url": "https://genaiskills.io"
+  },
   "homepage": "https://github.com/larrygmaguire-hash/cowork-business-os",
   "repository": "https://github.com/larrygmaguire-hash/cowork-business-os",
   "license": "MIT",

@@ -1,8 +1,12 @@
 {
   "name": "prima-scholar",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "description": "Academic research and citation management for Cowork. Search PubMed, arXiv, Semantic Scholar, and CrossRef. Manage a local research library. Write with proper APA7 citations.",
-  "author": { "name": "Larry G. Maguire" },
+  "author": {
+    "name": "Larry G. Maguire",
+    "email": "larrygmaguire@pm.me",
+    "url": "https://genaiskills.io"
+  },
   "homepage": "https://github.com/larrygmaguire-hash/cowork-business-os",
   "repository": "https://github.com/larrygmaguire-hash/cowork-business-os",
   "license": "MIT",

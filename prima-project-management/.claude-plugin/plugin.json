@@ -1,8 +1,12 @@
 {
   "name": "prima-project-management",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "description": "Project tracking and session lifecycle for Cowork Business OS. Daily briefing, session close, project and client creation, milestone and task tracking, state management across your whole business.",
-  "author": { "name": "Larry G. Maguire" },
+  "author": {
+    "name": "Larry G. Maguire",
+    "email": "larrygmaguire@pm.me",
+    "url": "https://genaiskills.io"
+  },
   "homepage": "https://github.com/larrygmaguire-hash/cowork-business-os",
   "repository": "https://github.com/larrygmaguire-hash/cowork-business-os",
   "license": "MIT",

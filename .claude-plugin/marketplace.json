@@ -1,6 +1,10 @@
 {
   "name": "cowork-business-os",
-  "owner": { "name": "Larry G. Maguire" },
+  "owner": {
+    "name": "Larry G. Maguire",
+    "email": "larrygmaguire@pm.me",
+    "url": "https://genaiskills.io"
+  },
   "metadata": {
     "description": "Cowork Business OS — a working operating system for running your business inside the Claude Desktop app. Core plugin plus PRIMA add-ons for project management, session memory, and academic research."
   },
@@ -8,26 +12,46 @@
     {
       "name": "cowork-business-os",
       "source": "./cowork-business-os",
-      "description": "Core plugin for Cowork Business OS. Scaffolds a new business workspace on your computer and ships the content-production skills used across every task. Required for PRIMA Project Management. Recommended for all users.",
-      "author": { "name": "Larry G. Maguire" }
+      "description": "Core content skills plus the workspace scaffolder. Required for prima-project-management.",
+      "category": "productivity",
+      "author": {
+        "name": "Larry G. Maguire",
+        "email": "larrygmaguire@pm.me",
+        "url": "https://genaiskills.io"
+      }
     },
     {
       "name": "prima-project-management",
       "source": "./prima-project-management",
-      "description": "Project tracking and session lifecycle for Cowork Business OS. Daily briefing, session close, project and client creation, milestone and task tracking, state management across your whole business.",
-      "author": { "name": "Larry G. Maguire" }
+      "description": "Project and client state lifecycle, session commands, milestone and task tracking.",
+      "category": "productivity",
+      "author": {
+        "name": "Larry G. Maguire",
+        "email": "larrygmaguire@pm.me",
+        "url": "https://genaiskills.io"
+      }
     },
     {
       "name": "prima-memory",
       "source": "./prima-memory",
-      "description": "Session history recall for Cowork. Searchable access to your past Cowork conversations through a pre-built index. Ask what you worked on last week and get real answers.",
-      "author": { "name": "Larry G. Maguire" }
+      "description": "Searchable session history via bundled MCP server.",
+      "category": "memory",
+      "author": {
+        "name": "Larry G. Maguire",
+        "email": "larrygmaguire@pm.me",
+        "url": "https://genaiskills.io"
+      }
     },
     {
       "name": "prima-scholar",
       "source": "./prima-scholar",
-      "description": "Academic research and citation management for Cowork. Search PubMed, arXiv, Semantic Scholar, and CrossRef. Manage a local research library. Write with proper APA7 citations.",
-      "author": { "name": "Larry G. Maguire" }
+      "description": "Academic research workflow with bundled MCP servers for PubMed, arXiv, Semantic Scholar, CrossRef.",
+      "category": "research",
+      "author": {
+        "name": "Larry G. Maguire",
+        "email": "larrygmaguire@pm.me",
+        "url": "https://genaiskills.io"
+      }
     }
   ]
 }

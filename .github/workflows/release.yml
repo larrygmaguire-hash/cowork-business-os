@@ -1,0 +1,52 @@
+name: Release plugins
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install zip
+        run: sudo apt-get update && sudo apt-get install -y zip
+
+      - name: Build .plugin files
+        run: |
+          mkdir -p release-artefacts
+          for PLUGIN_NAME in cowork-business-os prima-project-management prima-memory prima-scholar; do
+            echo "Building ${PLUGIN_NAME}..."
+            cd "${GITHUB_WORKSPACE}/${PLUGIN_NAME}"
+            zip -r "/tmp/${PLUGIN_NAME}.plugin" . \
+              -x "*.DS_Store" -x "node_modules/*" -x ".git/*" -x ".env" -x "*.log" -x "setup/*"
+            cp "/tmp/${PLUGIN_NAME}.plugin" "${GITHUB_WORKSPACE}/release-artefacts/${PLUGIN_NAME}.plugin"
+            cd "${GITHUB_WORKSPACE}"
+          done
+          ls -lh release-artefacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-artefacts/*.plugin
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+
+      - name: Mirror to private repo (org-admin sync target)
+        env:
+          MIRROR_TOKEN: ${{ secrets.MIRROR_REPO_PAT }}
+        run: |
+          git config user.name "release-bot"
+          git config user.email "release-bot@users.noreply.github.com"
+          git remote add mirror "https://x-access-token:${MIRROR_TOKEN}@github.com/larrygmaguire-hash/cowork-business-os-private.git"
+          git push mirror --tags
+          git push mirror HEAD:main --force
