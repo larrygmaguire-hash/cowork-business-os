@@ -1,7 +1,9 @@
 {
   "name": "cowork-business-os",
   "owner": { "name": "Larry G. Maguire" },
-  "description": "Cowork Business OS — a working operating system for running your business inside the Claude Desktop app. Core plugin plus PRIMA add-ons for project management, session memory, and academic research.",
+  "metadata": {
+    "description": "Cowork Business OS — a working operating system for running your business inside the Claude Desktop app. Core plugin plus PRIMA add-ons for project management, session memory, and academic research."
+  },
   "plugins": [
     {
       "name": "cowork-business-os",
