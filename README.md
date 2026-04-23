@@ -28,7 +28,7 @@ The two are for different users.
 
 **Cowork Business OS is the publicly available option.** It was designed specifically for Cowork — the Claude desktop app's knowledge-work mode — which is a more constrained environment by design. It gives you the core of what AI Business OS offers (scaffolding, content skills, project tracking, session memory, academic research) without the developer tooling. If you don't want to touch VS Code or Git and just want Claude to help you run your business inside the desktop app, this is the right choice, and you can install it yourself by following the steps below. It is free and MIT-licensed.
 
-**AI Business OS is not publicly installable.** It is a client-only product. Larry installs, configures, and maintains AI Business OS for each client on their own private repository as part of an engagement. It is not available on GitHub as a public template or download, and there is no self-service signup. If you want AI Business OS for your business, the route is to contact Larry directly (hello@humanperformance.ie) to discuss an install.
+**AI Business OS is not publicly installable.** It is a client-only product. Larry installs, configures, and maintains AI Business OS for each client on their own private repository as part of an engagement. There is no public download and no self-service signup. A public preview repository at https://github.com/larrygmaguire-hash/ai-business-os-preview shows the structure, skills, commands, and documentation so you can see what it does before enquiring — but it is for inspection only, not installation. To get AI Business OS for your business, contact Larry directly (hello@humanperformance.ie) to discuss an install.
 
 **When to pick which:**
 
