@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand-card.png" alt="Cowork Business OS" width="800">
+</p>
+
 # Cowork Business OS
 
 **Version:** v2.1.0
@@ -31,6 +35,7 @@ cowork-business-os/                          Marketplace root (this repo)
 │   └── workflows/
 │       └── release.yml                      Builds the .plugin files on every version tag
 ├── assets/
+│   ├── brand-card.png                       Top-level marketplace card (README hero)
 │   └── brand-cards/                         Per-plugin brand card images
 │
 ├── cowork-business-os/                      Plugin 1 — core content skills + scaffolder
