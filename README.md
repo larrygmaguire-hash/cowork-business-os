@@ -1,48 +1,14 @@
-<p align="center">
-  <img src="assets/brand-card.png" alt="Cowork Business OS" width="800">
-</p>
-
 # Cowork Business OS
 
 **Version:** v2.1.0
 
-A working operating system for running your business inside Cowork (the Claude desktop app's knowledge-work mode).
+A working operating system for running your business inside Cowork (the Claude desktop app's knowledge-work mode). Cowork out of the box is a blank canvas — every conversation starts from zero and nothing persists. Cowork Business OS gives it structure, memory, and a set of pre-configured skills: a workspace on your machine that Claude understands, a project register that carries over between sessions, searchable history across conversations, ten content-production skills tuned to your brand, and an academic research workflow with proper citations. You go from a stateless chat window to a real place to work in about ten minutes.
 
-Four plugins that work together to turn Cowork into a complete business OS: core content skills plus a workspace scaffolder, project and session lifecycle, searchable session history, and academic research with citation management.
+Four plugins that work together: core content skills plus a workspace scaffolder, project and session lifecycle, searchable session history, and academic research with citation management.
 
 ## Relationship to AI Business OS
 
-Cowork Business OS is a derivative of **AI Business OS**, the original and fuller product built for Claude Code in VS Code. AI Business OS is where the engine, the skills, the rules, and the PRIMA project management system were all developed first. Cowork Business OS is the adapted version — the parts that fit inside Cowork's plugin model, packaged as four plugins you can install into the Claude desktop app.
-
-The two are for different users.
-
-**AI Business OS (Claude Code in VS Code) is the more powerful option.** It's designed for people comfortable with a developer-style environment — VS Code, Git, a repository, the command line when needed. Because it runs inside a real workspace on your machine, it has capabilities that Cowork's plugin sandbox cannot provide:
-
-- **Hooks** — automatic behaviours that fire before or after tool calls (e.g. auto-checkpoint every 20 tool calls, block destructive commands, validate state writes). Cowork plugins cannot run hooks.
-- **MCP servers beyond what Cowork allows** — richer integrations (CRM, custom databases, external APIs) that Cowork's plugin surface currently restricts.
-- **Fuller rule layer** — dozens of behavioural rules auto-loaded from `.claude/rules/` covering communication standards, file organisation, state validation, commit discipline, research standards, parallel agent coordination, and more. Cowork plugins carry a lighter slice of these.
-- **Per-machine state persistence and Git sync** — your workspace is a real repository, so history, rollback, branches, and multi-device sync work natively.
-- **Extension packs** — additional skill bundles for specific industries or functions (accountancy, coaching, property management, education, etc.).
-- **`/update` workflow** — engine updates delivered without losing customisations, via a three-tier manifest that separates engine files from your files.
-- **Managed-install option** — for non-technical users, Larry installs and maintains AI Business OS on their repository; updates arrive automatically.
-
-**Cowork Business OS is the publicly available option.** It was designed specifically for Cowork — the Claude desktop app's knowledge-work mode — which is a more constrained environment by design. It gives you the core of what AI Business OS offers (scaffolding, content skills, project tracking, session memory, academic research) without the developer tooling. If you don't want to touch VS Code or Git and just want Claude to help you run your business inside the desktop app, this is the right choice, and you can install it yourself by following the steps below. It is free and MIT-licensed.
-
-**AI Business OS is not publicly installable.** It is a client-only product. Larry installs, configures, and maintains AI Business OS for each client on their own private repository as part of an engagement. There is no public download and no self-service signup. A public preview repository at https://github.com/larrygmaguire-hash/ai-business-os-preview shows the structure, skills, commands, and documentation so you can see what it does before enquiring — but it is for inspection only, not installation. To get AI Business OS for your business, contact Larry directly (larry@genaiskills.io) to discuss an install.
-
-**When to pick which:**
-
-| Your situation | The right option |
-|---|---|
-| Individual user, Free/Pro/Max plan, wants to install today without support | **Cowork Business OS** (this repo, free) |
-| Wants to stay entirely inside the Claude desktop app | **Cowork Business OS** |
-| No VS Code, no Git, no terminal | **Cowork Business OS** |
-| Business/client who wants a fully managed install, updates handled, extension packs tailored to their industry | **AI Business OS** (client engagement) |
-| Needs hooks, the full rule layer, richer MCP integrations, or a workspace as a real Git repository | **AI Business OS** (client engagement) |
-
-Both products share the PRIMA project management system (state schema, commands, skills) — so the way of working is consistent across them. A business that starts on Cowork Business OS and later moves to an AI Business OS client install will find the project structure and workflows translate directly.
-
-For AI Business OS enquiries: larry@genaiskills.io.
+Cowork Business OS is the publicly available, free, MIT-licensed derivative of **AI Business OS** — the original and fuller product built for Claude Code in VS Code. AI Business OS has more flexibility (hooks, richer MCP integrations, full rule layer, extension packs for specific industries) and is a client-only managed product, not publicly installable. If you need the advanced version, take a look at the public preview at https://github.com/larrygmaguire-hash/ai-business-os-preview or email larry@genaiskills.io.
 
 ## The plugins
 
@@ -65,7 +31,7 @@ cowork-business-os/                          Marketplace root (this repo)
 │   └── workflows/
 │       └── release.yml                      Builds the .plugin files on every version tag
 ├── assets/
-│   └── brand-card.png                       Marketplace card image
+│   └── brand-cards/                         Per-plugin brand card images
 │
 ├── cowork-business-os/                      Plugin 1 — core content skills + scaffolder
 │   ├── .claude-plugin/plugin.json
@@ -347,4 +313,4 @@ MIT. See [LICENSE](LICENSE).
 
 ## Author
 
-Larry G. Maguire — [Human Performance](https://humanperformance.ie) — [GenAI Skills Academy](https://genaiskills.io)
+Larry G. Maguire — [GenAI Skills Academy](https://genaiskills.io)

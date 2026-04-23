@@ -126,8 +126,12 @@ Return:
 
 ## Domains of Expertise
 
-- Psychology (organisational, performance, personality)
-- Workplace behaviour and motivation
-- Human performance and skill acquisition
-- AI/technology adoption in organisations
-- Research methodology and statistics
+- Science and technology (physical sciences, life sciences, computer science, engineering, AI and machine learning)
+- Business and management (strategy, operations, leadership, organisational behaviour, entrepreneurship, economics, finance)
+- Psychology and philosophy (cognitive, clinical, developmental, organisational, social psychology; ethics, epistemology, philosophy of mind)
+- Humanities (history, literature, linguistics, cultural studies, anthropology, sociology)
+- Health and medicine (clinical research, public health, epidemiology, nutrition, exercise science, sports science)
+- Education and learning sciences (pedagogy, instructional design, skill acquisition, expertise development)
+- Law and policy (legal research, regulatory analysis, public policy)
+- Arts and design (creative practice, design theory, media studies)
+- Research methodology and statistics (quantitative, qualitative, mixed methods; meta-analysis; systematic reviews)
