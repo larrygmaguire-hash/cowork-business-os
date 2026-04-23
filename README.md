@@ -28,7 +28,7 @@ The two are for different users.
 
 **Cowork Business OS is the publicly available option.** It was designed specifically for Cowork — the Claude desktop app's knowledge-work mode — which is a more constrained environment by design. It gives you the core of what AI Business OS offers (scaffolding, content skills, project tracking, session memory, academic research) without the developer tooling. If you don't want to touch VS Code or Git and just want Claude to help you run your business inside the desktop app, this is the right choice, and you can install it yourself by following the steps below. It is free and MIT-licensed.
 
-**AI Business OS is not publicly installable.** It is a client-only product. Larry installs, configures, and maintains AI Business OS for each client on their own private repository as part of an engagement. There is no public download and no self-service signup. A public preview repository at https://github.com/larrygmaguire-hash/ai-business-os-preview shows the structure, skills, commands, and documentation so you can see what it does before enquiring — but it is for inspection only, not installation. To get AI Business OS for your business, contact Larry directly (hello@humanperformance.ie) to discuss an install.
+**AI Business OS is not publicly installable.** It is a client-only product. Larry installs, configures, and maintains AI Business OS for each client on their own private repository as part of an engagement. There is no public download and no self-service signup. A public preview repository at https://github.com/larrygmaguire-hash/ai-business-os-preview shows the structure, skills, commands, and documentation so you can see what it does before enquiring — but it is for inspection only, not installation. To get AI Business OS for your business, contact Larry directly (larry@genaiskills.io) to discuss an install.
 
 **When to pick which:**
 
@@ -42,7 +42,7 @@ The two are for different users.
 
 Both products share the PRIMA project management system (state schema, commands, skills) — so the way of working is consistent across them. A business that starts on Cowork Business OS and later moves to an AI Business OS client install will find the project structure and workflows translate directly.
 
-For AI Business OS enquiries: hello@humanperformance.ie.
+For AI Business OS enquiries: larry@genaiskills.io.
 
 ## The plugins
 
@@ -54,6 +54,8 @@ For AI Business OS enquiries: hello@humanperformance.ie.
 | `prima-scholar` | Academic research across PubMed, arXiv, Semantic Scholar, CrossRef, bioRxiv, OpenAlex, Europe PMC, CORE. Local research library. APA7 citations. Bundled MCP servers. | Standalone |
 
 ## Repository structure
+
+Two structures are relevant. The first is this repository — the marketplace that holds the four plugins and the workflow that builds them. The second is the **workspace template** inside the `cowork-business-os` plugin, which is what `/cowork-business-os:setup` writes onto your computer when you run it. You interact with the workspace template every day; you rarely see the marketplace repo again after download.
 
 ```
 cowork-business-os/                          Marketplace root (this repo)
@@ -70,7 +72,49 @@ cowork-business-os/                          Marketplace root (this repo)
 │   ├── commands/
 │   │   └── setup.md                         /cowork-business-os:setup wizard
 │   ├── skills/                              10 content-production skills
-│   └── templates/                           Files written into your workspace on setup
+│   └── templates/
+│       └── workspace/                       Copied onto your machine by /setup
+│           ├── .claude/                     Engine — rules, commands, skills, state schema
+│           ├── Projects/                    Active project folders
+│           ├── Clients/                     Client folders
+│           ├── Archive/                     Completed or retired items
+│           ├── Documentation/               Templates, reports, reference material
+│           ├── Infrastructure/Scripts/      State backup and validation scripts
+│           ├── 01 Finance/                  CLAUDE.md + 5 subfolders
+│           │   ├── 01.1 Accounts Payable/
+│           │   ├── 01.2 Accounts Receivable/
+│           │   ├── 01.3 Budgets/
+│           │   ├── 01.4 Tax & Compliance/
+│           │   └── 01.5 Reports/
+│           ├── 02 Human Resources/          CLAUDE.md + 5 subfolders
+│           │   ├── 02.1 Recruitment/
+│           │   ├── 02.2 Onboarding/
+│           │   ├── 02.3 Policies/
+│           │   ├── 02.4 Training/
+│           │   └── 02.5 Employee Records/
+│           ├── 03 Sales/                    CLAUDE.md + 3 subfolders
+│           │   ├── 03.1 Pipeline/
+│           │   ├── 03.2 Proposals/
+│           │   └── 03.3 Contracts/
+│           ├── 04 Marketing/                CLAUDE.md + 5 subfolders
+│           │   ├── 04.1 Campaigns/
+│           │   ├── 04.2 Content/
+│           │   ├── 04.3 Brand Assets/
+│           │   ├── 04.4 Analytics/
+│           │   └── 04.5 Social Media/
+│           ├── 05 Operations/               CLAUDE.md + 4 subfolders
+│           │   ├── 05.1 Processes/
+│           │   ├── 05.2 Vendors & Suppliers/
+│           │   ├── 05.3 Logistics/
+│           │   └── 05.4 Quality/
+│           ├── 06 Products/                 CLAUDE.md + 3 subfolders
+│           │   ├── 06.1 Catalogue/
+│           │   ├── 06.2 Development/
+│           │   └── 06.3 Pricing/
+│           └── 07 Legal/                    CLAUDE.md + 3 subfolders
+│               ├── 07.1 Contracts/
+│               ├── 07.2 Compliance/
+│               └── 07.3 Intellectual Property/
 │
 ├── prima-project-management/                Plugin 2 — project tracking + session lifecycle
 │   ├── .claude-plugin/plugin.json
