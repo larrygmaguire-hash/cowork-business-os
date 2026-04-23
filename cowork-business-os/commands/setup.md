@@ -102,21 +102,62 @@ Written:
   Clients/
   Archive/
   Documentation/
+    Onboarding/     (Personal Preferences + Cowork Global Instructions guides)
   01 Finance/ through 07 Legal/ (standard business folders)
   Infrastructure/Scripts/prima/ (state backup and validate scripts)
 
-Recommended next steps:
-
-1. Open the target folder as a workspace in Cowork.
-2. Populate .claude/company/ files — overview, team, audiences, voice, brand, industry. Each file has a setup prompt inside it.
-3. (Optional) Install `prima-project-management` for project tracking commands (/day, /night, /newproject, /status).
-4. (Optional) Install `prima-memory` for searchable session history.
-5. (Optional) Install `prima-scholar` for academic research workflows.
+Your workspace structure is ready — but there is one more step before you start using it. See Step 6.
 ```
 
-## Step 6 — Re-run behaviour
+## Step 6 — Set up your Cowork preferences (required, ~10 minutes)
 
-If `/cowork-business-os:setup` is invoked on a folder that already contains a `.claude/` directory, stop and warn:
+This is the step people forget. Without it, Cowork does not know who you are or how you want it to work with you on your machine. Both pieces have been written to your workspace as guides — you run them in a **fresh Claude Desktop chat** (not inside this workspace, not inside any project), and they walk you through producing two pasteable blocks.
+
+Show this to the user:
+
+```
+Two final things before Cowork Business OS is ready to use. Each takes under ten minutes using the Fast Path.
+
+Both guides are already in your workspace at:
+
+  [TARGET_FOLDER]/Documentation/Onboarding/
+
+Do them in order:
+
+1. Personal Preferences (~5 min).
+   Open Onboarding-Guide-1-Personal-Preferences.md.
+   Follow the steps under "How to Use This Document".
+   Final output goes into Claude Desktop → Settings → General → Personal Preferences.
+
+   This is the account-wide profile about you (your role, organisation, typical
+   work, terminology). It loads into every Claude conversation from then on.
+
+2. Cowork Global Instructions (~8 min).
+   Open Onboarding-Guide-2-Cowork-Global-Instructions.md.
+   Follow the same pattern.
+   Final output goes into Claude Desktop → Settings → Cowork → Global Instructions.
+
+   This is the standing brief for how Claude should behave when it is working on
+   your computer (language conventions, tone, file-handling rules, stopping
+   rules). It loads into every Cowork session.
+
+Important: Do each one in a FRESH Claude Desktop chat — not this conversation,
+not inside your new workspace, not inside any project. The interview needs a
+clean slate because Cowork will load your new preferences into every future
+session once you save them.
+
+Once both are saved, Cowork Business OS is ready to use. Open this workspace
+folder in Cowork and start asking Claude for help with your work.
+
+Optional next plugins:
+  - prima-project-management for /day, /night, /newproject, /status and more
+  - prima-memory for searchable session history
+  - prima-scholar for academic research workflows
+```
+
+## Step 7 — Re-run behaviour
+
+If `/setup` is invoked on a folder that already contains a `.claude/` directory, stop and warn:
 
 ```
 This folder already contains a Cowork Business OS workspace (.claude/ is present). Running setup again will overwrite configuration files.

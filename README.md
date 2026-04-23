@@ -178,7 +178,31 @@ The setup wizard will ask you questions, one at a time. Answer each in plain Eng
 
 When it finishes, you'll have a new folder on your computer with everything set up. From this point on, all your business work — projects, clients, content, state — lives in that folder.
 
-### Step 5 — You're done
+### Step 5 — Set up your Cowork preferences (required, ~10 minutes)
+
+This is the step people forget. Without it, Cowork doesn't know who you are or how you want it to work with you on your machine. Two guides have been written into your new workspace at `[your-workspace]/Documentation/Onboarding/` and you'll use them now.
+
+**Do each one in a fresh Claude Desktop chat — not inside your new workspace and not inside any project.** The interview needs a clean slate because Cowork loads your new preferences into every future session once you save them.
+
+**5a — Personal Preferences (~5 minutes).**
+
+1. In Claude Desktop, start a completely fresh chat (new conversation, not in any project).
+2. Open `Onboarding-Guide-1-Personal-Preferences.md` from your workspace's `Documentation/Onboarding/` folder in any text editor or file preview.
+3. Follow the steps under *How to Use This Document* at the top of the guide. You'll paste a task brief into Claude and answer about ten questions (fewer if you upload a CV or LinkedIn profile — that's the Fast Path).
+4. Claude will produce a code block at the end. Paste it into **Claude Desktop → Settings → General → Personal Preferences** and save.
+
+This is the account-wide profile about you — your role, organisation, typical work, terminology. It loads into every Claude conversation from then on, on every device where you're signed in.
+
+**5b — Cowork Global Instructions (~8 minutes).**
+
+1. Start another fresh chat.
+2. Open `Onboarding-Guide-2-Cowork-Global-Instructions.md` from the same folder.
+3. Follow the same pattern. You'll answer about thirteen questions (again, fewer with the Fast Path if you upload a style guide or similar).
+4. Claude produces a code block. Paste it into **Claude Desktop → Settings → Cowork → Global Instructions** and save.
+
+This is the standing brief for how Claude should behave when it's working on your computer — language conventions, tone, file-handling rules, stopping rules. It loads into every Cowork session.
+
+### Step 6 — You're done
 
 You don't need to do anything for the other three plugins. `prima-project-management`, `prima-memory`, and `prima-scholar` are ready to use immediately. They wake up when you ask Claude to do something that matches their skills (for example, "start my day" triggers the daily briefing, "find that conversation from last week about X" triggers session memory, "find me five papers on Y" triggers academic search).
 
