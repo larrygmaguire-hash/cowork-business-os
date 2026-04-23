@@ -1,27 +1,26 @@
 #!/bin/bash
-# ENGINE CRITICAL — Do not modify. Changes affect state validation integrity.
 # PRIMA — Validate state.json
-# Usage: Scripts/validate-state.sh [path-to-state.json]
+# Usage: validate-state.sh <workspace-root>
+#
+# <workspace-root> is the absolute path to the Cowork Business OS workspace
+# (the folder containing .claude/state/). Passed explicitly by the caller.
 
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+WORKSPACE_ROOT="$1"
 
-# Find workspace root by searching upward for .claude/state/
-WORKSPACE_ROOT="$SCRIPT_DIR"
-while [ "$WORKSPACE_ROOT" != "/" ]; do
-  if [ -d "$WORKSPACE_ROOT/.claude/state" ]; then
-    break
-  fi
-  WORKSPACE_ROOT="$(dirname "$WORKSPACE_ROOT")"
-done
+if [ -z "$WORKSPACE_ROOT" ]; then
+  echo "Usage: validate-state.sh <workspace-root>"
+  echo "  <workspace-root> is the absolute path to the workspace folder (the folder containing .claude/state/)."
+  exit 2
+fi
 
-if [ "$WORKSPACE_ROOT" = "/" ]; then
-  echo "Could not find workspace root (.claude/state/ not found)"
+if [ ! -d "$WORKSPACE_ROOT/.claude/state" ]; then
+  echo "No .claude/state/ directory at $WORKSPACE_ROOT"
   exit 1
 fi
 
-STATE_FILE="${1:-$WORKSPACE_ROOT/.claude/state/state.json}"
+STATE_FILE="$WORKSPACE_ROOT/.claude/state/state.json"
 SCHEMA_FILE="$WORKSPACE_ROOT/.claude/state/state.schema.json"
 
 # Check state file exists

@@ -1,6 +1,8 @@
 ---
 description: Manage your research library — import documents, search, browse collections, view stats
 argument-hint: "[action] [query]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 # /library — Research Library Management

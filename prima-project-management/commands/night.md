@@ -1,5 +1,8 @@
 ---
 description: Update project state and commit changes at end of session
+argument-hint: "[session summary]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 ## Step 0 — Workspace check (mandatory)
@@ -81,7 +84,7 @@ Present a single summary for approval. **Show the exact `stoppedAt` and `lastAct
 
 After approval:
 
-1. Run `${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh`
+1. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh "$CLAUDE_PROJECT_DIR"`
 2. Read `.claude/state/state.json` (index)
 3. Apply updates using **v2 split writes via Bash + jq only**. Edit/Write tools are blocked on `.claude/**` by the CLI's hardcoded protected-path check — every state mutation in this step must go through `jq` via Bash. See `state-io.md` "jq Patterns" for the full reference.
 
@@ -169,7 +172,7 @@ jq -n --arg id "$ID" \
   > ".claude/state/projects/$ID.json"
 ```
 
-4. Validate after every write: `jq empty .claude/state/state.json` and `jq empty .claude/state/projects/P###.json` for each touched detail file. Run `${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh` if available — if validation fails, restore from backup and report error.
+4. Validate after every write: `jq empty .claude/state/state.json` and `jq empty .claude/state/projects/P###.json` for each touched detail file. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh "$CLAUDE_PROJECT_DIR"` if available — if validation fails, restore from backup and report error.
 
 ## Step 4: Learning Detection
 

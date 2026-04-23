@@ -1,6 +1,8 @@
 ---
 description: Look up a paper by DOI or title and return a formatted APA7 citation
 argument-hint: "[DOI or title]"
+allowed-tools: Read, Bash
+model: haiku
 ---
 
 # /cite — Quick Citation Lookup

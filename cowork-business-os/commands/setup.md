@@ -1,5 +1,7 @@
 ---
 description: Scaffold a Cowork Business OS workspace into a folder you choose
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 First-time workspace setup for Cowork Business OS. Runs a short wizard to collect basic details, then writes the workspace scaffolding into a folder of the user's choice by reading templates bundled with this plugin.

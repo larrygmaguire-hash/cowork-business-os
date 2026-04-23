@@ -128,20 +128,20 @@ Follow state validation rules (backup first, validate JSON).
 
 ### Example 1: Process a client session after a Zoom call
 
-**User says:** "Process the session transcript at /Users/larrymaguire/Google Drive/Private Practice/Clients/Sabino Moreira/Session Record/2026-02-18-Session-One/GMT20260218-140017_Recording.transcript.vtt"
+**User says:** "Process the session transcript at ~/Downloads/2026-02-18-session-one.vtt"
 
 **Actions:**
-1. Identify client (Sabino Moreira, P043) and session number (Session 1) from path and state
-2. Run `Scripts/vtt-to-text.sh` on the VTT → produces `-clean.txt` (91KB → 54KB)
-3. Spawn agent to read cleaned file and write structured summary
-4. Update `Clients/P043-Sabino Moreira/CLAUDE.md` session log
-5. Update `state.json` P043 entry (lastWorked, lastAction, notes)
+1. Identify client (Acme Client, P001) and session number (Session 1) from the path and state
+2. Clean the VTT (strip WebVTT timestamps and speaker cues) into a plain text file
+3. Spawn an agent to read the cleaned file and write a structured summary
+4. Update `Clients/P001-Acme Client/CLAUDE.md` session log
+5. Update `state.json` P001 entry (lastWorked, lastAction, notes)
 
-**Result:** Summary at `~/Documents/Agent Outputs/P043/2026-02-18-1630-sabino-session-one-summary.md`, CLAUDE.md and state.json updated.
+**Result:** Summary at `~/Documents/Agent Outputs/P001/2026-02-18-1630-acme-client-session-one-summary.md`, CLAUDE.md and state.json updated.
 
 ### Example 2: Update project after a follow-up session
 
-**User says:** "Here's the VTT from today's session with Sabino, update the project"
+**User says:** "Here's the VTT from today's session with Acme Client, update the project"
 
 **Actions:**
 1. Identify client and session number (Session 2, based on existing Session 1 in CLAUDE.md)

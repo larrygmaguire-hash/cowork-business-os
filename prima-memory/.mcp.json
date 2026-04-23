@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "prima-memory": {
-      "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "prima-memory-mcp@2.1.0"],
       "env": {}
     }
   }

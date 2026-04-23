@@ -1,5 +1,7 @@
 ---
 description: Generate an interactive project timeline visualisation
+allowed-tools: Read, Write, Glob, Grep, Bash
+model: haiku
 ---
 
 ## Step 0 — Workspace check (mandatory)

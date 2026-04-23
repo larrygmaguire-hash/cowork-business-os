@@ -41,12 +41,16 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Mirror to private repo (org-admin sync target)
-        env:
-          MIRROR_TOKEN: ${{ secrets.MIRROR_REPO_PAT }}
-        run: |
-          git config user.name "release-bot"
-          git config user.email "release-bot@users.noreply.github.com"
-          git remote add mirror "https://x-access-token:${MIRROR_TOKEN}@github.com/larrygmaguire-hash/cowork-business-os-private.git"
-          git push mirror --tags
-          git push mirror HEAD:main --force
+      # Mirror to private repo (org-admin sync target) — DISABLED until private mirror
+      # repo and MIRROR_REPO_PAT secret exist. Re-enable when:
+      #   1. Private repo larrygmaguire-hash/cowork-business-os-private exists
+      #   2. Personal Access Token with repo scope stored as MIRROR_REPO_PAT secret on this repo
+      # - name: Mirror to private repo (org-admin sync target)
+      #   env:
+      #     MIRROR_TOKEN: ${{ secrets.MIRROR_REPO_PAT }}
+      #   run: |
+      #     git config user.name "release-bot"
+      #     git config user.email "release-bot@users.noreply.github.com"
+      #     git remote add mirror "https://x-access-token:${MIRROR_TOKEN}@github.com/larrygmaguire-hash/cowork-business-os-private.git"
+      #     git push mirror --tags
+      #     git push mirror HEAD:main --force

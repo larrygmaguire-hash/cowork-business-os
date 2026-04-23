@@ -1,11 +1,17 @@
-# cowork-prima-memory
+# prima-memory
 
-**Searchable session recall for Cowork.**
+Searchable session recall for Cowork. Indexes past Cowork conversation sessions and exposes keyword, semantic, and hybrid search as MCP tools. Companion plugin to `prima-project-management` — when both are installed, the **resume** and **day** commands use session history for richer session recovery.
 
-Indexes past Cowork conversation sessions and exposes keyword, semantic, and hybrid search as MCP tools. Companion plugin to `cowork-prima-pm` — when both are installed, the `/resume` and `/day` commands use session history for richer session recovery.
+## Requires
 
-## What it provides
+Nothing. This plugin works standalone. It sits well alongside `prima-project-management`, which uses session recall for context when both are installed.
 
+## Installs
+
+**MCP server (bundled):**
+- `prima-memory` — reads Cowork conversation logs, indexes them into a local SQLite database, and exposes the tools below.
+
+**MCP tools provided:**
 | Tool | Purpose |
 |------|---------|
 | `search_history` | Keyword, semantic, or hybrid search with time filter |
@@ -15,36 +21,31 @@ Indexes past Cowork conversation sessions and exposes keyword, semantic, and hyb
 | `rebuild_index` | Re-index after upgrades |
 | `summarise_period` | Aggregate summary across a date range |
 
-Plus a `session-recall` skill that documents retrieval discipline — when to search, when to load detail, how to protect context.
+**Skill:**
+- `session-recall` — retrieval discipline for when to search, when to load detail, and how to protect context.
 
 ## Install
 
-Via the `cowork-plugins` marketplace:
-
-1. In Cowork: add marketplace `larrygmaguire-hash/cowork-plugins`
-2. Install `cowork-prima-memory`
-3. The MCP server starts automatically on session load
+1. Download `prima-memory.plugin` from the [latest release](https://github.com/larrygmaguire-hash/cowork-business-os/releases/latest).
+2. In the Claude desktop app, open the **Cowork** tab.
+3. Left sidebar → **Customize** → **Browse plugins** → **Upload a custom plugin file** → select the downloaded file.
+4. The MCP server starts automatically on next Cowork session load.
 
 ## How it works
 
 - Reads Cowork conversation logs (stored as `.jsonl` files in `~/.claude/projects/`)
 - Builds a SQLite index at `.prima-memory/index.db` inside the current workspace
-- Provides MCP tools for keyword + semantic search
-- Workspace-scoped — never leaks data from other workspaces
+- Provides MCP tools for keyword and semantic search
+- Workspace-scoped — never leaks data from one workspace into another
 
-## Companion plugins
+## Environment variables
 
-- [cowork-prima-pm](https://github.com/larrygmaguire-hash/cowork-prima-pm) — project management. `/resume` uses session recall for richer recovery when this plugin is installed.
-
-## Prerequisites
-
-- Cowork (Claude Desktop)
-- Node.js 18+ (shipped with Cowork in most installs)
-
-## Related
-
-The Claude Code version lives at [larrygmaguire-hash/prima-memory](https://github.com/larrygmaguire-hash/prima-memory). Same underlying server, different host.
+None required.
 
 ## Licence
 
-Proprietary. Copyright Larry G. Maguire / Human Performance. Contact hello@humanperformance.ie for licensing enquiries.
+MIT — see [LICENSE](../LICENSE) at the repo root.
+
+## Support
+
+Report issues at https://github.com/larrygmaguire-hash/cowork-business-os/issues

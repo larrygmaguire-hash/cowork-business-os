@@ -1,6 +1,6 @@
 # Zoom MCP Tools Reference
 
-Quick reference for all Zoom MCP server tools available via `MCP Servers/P067-Zoom/`.
+Quick reference for the Zoom MCP server tools used by this skill. These tools are provided by a separately-installed Zoom MCP server — this plugin does not bundle one.
 
 ## Meeting Management
 

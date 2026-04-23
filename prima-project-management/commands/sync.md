@@ -1,5 +1,7 @@
 ---
 description: Commit and push changes to sync across devices
+allowed-tools: Read, Bash
+model: haiku
 ---
 
 ## Step 0 — Workspace check (mandatory)

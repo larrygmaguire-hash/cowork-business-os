@@ -1,5 +1,8 @@
 ---
 description: Retrieve context from a previous session to continue where you left off
+argument-hint: "[time or project-id]"
+allowed-tools: Read, Glob, Grep, Bash
+model: sonnet
 ---
 
 ## Step 0 — Workspace check (mandatory)
@@ -76,7 +79,7 @@ The user has a timestamp from `/save`.
 **Step 1:** Check for checkpoint file at `~/Documents/Agent Outputs/*/YYYY-MM-DD-session-checkpoint.md` with matching timestamp in filename.
 
 - **If checkpoint exists:** Read the latest section and present as resumption context.
-- **If no checkpoint:** Find the JSONL file in `~/.claude/projects/-Users-larrymaguire-LM-BIZ-OS/` whose modification time is closest to that timestamp (same day, or previous day if early morning). Use PRIMA Memory `get_recent_sessions` and match by time.
+- **If no checkpoint:** Find the JSONL file in `~/.claude/projects/<workspace-path-encoded>/` (Cowork encodes the current workspace path by replacing `/` and spaces with `-`, e.g. `/Users/you/My Workspace` becomes `-Users-you-My-Workspace`) whose modification time is closest to that timestamp (same day, or previous day if early morning). Use PRIMA Memory `get_recent_sessions` and match by time.
 
 **Step 2:** Show project context for any referenced projects. Read index first to find projects with recent `lastWorked`, then read their detail files for `stoppedAt` and `lastAction`:
 ```bash

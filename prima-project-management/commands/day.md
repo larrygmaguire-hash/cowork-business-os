@@ -1,5 +1,7 @@
 ---
 description: Daily briefing showing active projects, priorities, and recommended next steps
+allowed-tools: Read, Glob, Grep, Bash
+model: sonnet
 ---
 
 ## Step 0 — Workspace check (mandatory)
@@ -104,7 +106,7 @@ The Status column must show the display text (Active/Stale/Needs attention/Pause
 [Only show this section if drift was found in Step 2.5. Omit entirely if all repos match state.]
 | ID | Project | State Says | Repo Shows |
 |----|---------|-----------|------------|
-[e.g. P003 | AI Business OS | v1.4.0 | v1.5.0 (commit abc1234) ]
+[e.g. P003 | Example Project | v1.4.0 | v1.5.0 (commit abc1234) ]
 
 ⚠️ Run `/prima-project-management:night` or manually update state.json to correct.
 
@@ -136,7 +138,7 @@ After generating the briefing, scan all projects:
 - If `dueDate` is set and is before today, and status is `in-progress`:
   - Auto-set status to `overdue`
   - Report: "[ID] ([Project Name]) marked overdue — due [dueDate]"
-  - Run `${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh` then update state.json, then `${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh`
+  - Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh "$CLAUDE_PROJECT_DIR"` then update state.json, then `bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh "$CLAUDE_PROJECT_DIR"`
 
 ## Step 5: Project Actions
 

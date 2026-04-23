@@ -1,5 +1,8 @@
 ---
 description: Create a new client with standardised folder structure and profile
+argument-hint: "[client name]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 ## Step 0 — Workspace check (mandatory)
@@ -87,7 +90,7 @@ Clients/[Client Name]/
 
 If `.claude/state/state.json` exists:
 
-1. Run `${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh`
+1. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh "$CLAUDE_PROJECT_DIR"`
 2. Read `.claude/state/state.json` (index)
 3. **Check for duplicates** — search all existing projects (including archived) for matching or similar names
 4. Generate next project ID from `nextProjectNumber`
@@ -130,7 +133,7 @@ If `.claude/state/state.json` exists:
    }
    ```
 7. Increment `nextProjectNumber` by 1
-8. Run `${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh`
+8. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh "$CLAUDE_PROJECT_DIR"`
 9. Confirm: "Registered as {ID} in PRIMA state."
 
 ---
@@ -257,8 +260,8 @@ Add relevant suggestions to the "Potential AI Applications" section.
 - UK English throughout
 - All paths absolute
 - Date format: YYYY-MM-DD
-- Phone format: +353 for Irish numbers
-- Client folder naming: Use trading name or abbreviation if commonly used (e.g., "IREM" not "Indigo Real Estate Management")
+- Phone format: include the country code (e.g., +44, +353, +1)
+- Client folder naming: Use the trading name or a common abbreviation rather than the full legal name (e.g., "Acme" rather than "Acme International Holdings Ltd")
 
 ---
 

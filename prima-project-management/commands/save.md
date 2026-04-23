@@ -1,5 +1,8 @@
 ---
 description: Save session context and update project records
+argument-hint: "[session summary]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 ## Step 0 — Workspace check (mandatory)
@@ -30,7 +33,7 @@ Review the current session context — files modified, topics discussed, tasks c
 
 If projects can be identified:
 
-1. Backup state: `bash ${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh` (warn if missing, proceed)
+1. Backup state: `bash ${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh "$CLAUDE_PROJECT_DIR"` (warn if missing, proceed)
 2. Read `.claude/state/state.json` (index) to identify project IDs
 3. For each project worked on, apply **Pattern F (Split Write)** using **Bash + jq only** — NEVER Edit/Write tools (see `state-io.md` for jq patterns and rationale):
 
@@ -60,7 +63,7 @@ If projects can be identified:
 
    Status changes only if warranted (separate jq call, Pattern 2). Do NOT change `name`, `category`, `id`, or other unrelated fields.
 
-4. Validate JSON syntax: `jq empty .claude/state/state.json` and `jq empty .claude/state/projects/P###.json`. Run `${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh` if available.
+4. Validate JSON syntax: `jq empty .claude/state/state.json` and `jq empty .claude/state/projects/P###.json`. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh "$CLAUDE_PROJECT_DIR"` if available.
 
 If no projects can be identified, skip this step.
 

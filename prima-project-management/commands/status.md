@@ -1,5 +1,7 @@
 ---
 description: Project health report showing status and priorities across all projects
+allowed-tools: Read, Glob, Grep, Bash
+model: haiku
 ---
 
 ## Step 0 — Workspace check (mandatory)

@@ -1,6 +1,8 @@
 ---
 description: Start a research session — search academic databases, review results, and synthesise findings
 argument-hint: "[topic]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 # /scholar — Research Session

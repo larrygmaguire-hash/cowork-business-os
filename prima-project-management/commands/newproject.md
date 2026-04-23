@@ -1,5 +1,8 @@
 ---
 description: Create a new project with standardised structure
+argument-hint: "[project name]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
 ---
 
 ## Step 0 — Workspace check (mandatory)
@@ -504,7 +507,7 @@ Not generated automatically. Created per phase when the user wants to clarify im
 
 If `.claude/state/state.json` exists, register the new project:
 
-1. Run `${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh`
+1. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/backup-state.sh "$CLAUDE_PROJECT_DIR"`
 2. Read `.claude/state/state.json` (index)
 3. **Check for duplicates** — search all existing projects (including archived) for matching or similar names. If a potential match is found, STOP and present it to the user before proceeding (see `state-validation.md` Duplicate Detection rule)
 4. **Add index entry** to the `projects` array in `state.json` (Pattern G — index fields only):
@@ -545,7 +548,7 @@ If `.claude/state/state.json` exists, register the new project:
    ```
 6. Increment `nextProjectNumber` by 1 in `state.json`
 7. Write both files
-8. Run `${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh` — if validation fails, restore from backup and report error
+8. Run `bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate-state.sh "$CLAUDE_PROJECT_DIR"` — if validation fails, restore from backup and report error
 9. Confirm: "Registered as {ID} in PRIMA state."
 
 If state.json does not exist, skip this step silently.

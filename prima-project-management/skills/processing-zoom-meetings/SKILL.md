@@ -297,27 +297,27 @@ Full post-meeting workflow combining multiple features. Use when asked to "proce
 
 ### Example 1: Pull meeting summary after a client session
 
-**User says:** "Get the Zoom summary from today's session with Sabino"
+**User says:** "Get the Zoom summary from today's session with Acme Client"
 
 **Actions:**
-1. `zoom_list_meetings type="previous_meetings"` — find Sabino's meeting
+1. `zoom_list_meetings type="previous_meetings"` — find the meeting
 2. `zoom_list_recordings` — get UUID
 3. `zoom_get_meeting_summary meeting_id="<UUID>"` — fetch AI Companion summary
-4. Save to `Clients/P043-Sabino Moreira/2026-02-25-Session-2-SUMMARY.md`
+4. Save to `Clients/P001-Acme Client/2026-02-25-Session-2-SUMMARY.md`
 
 **Result:** Summary file saved, content presented to user.
 
 ### Example 2: Full post-session processing
 
-**User says:** "Process the Zoom session from today's call with Sabino, update the project"
+**User says:** "Process the Zoom session from today's call with Acme Client, update the project"
 
 **Actions:**
 1. Find meeting and get UUID
 2. Fetch AI Companion summary → save to client folder
 3. Attempt transcript fetch → handle empty gracefully
-4. Update `Clients/P043-Sabino Moreira/CLAUDE.md` session log
+4. Update `Clients/P001-Acme Client/CLAUDE.md` session log
 5. Draft and send client recap email (or skip if user declines)
-6. Update `state.json` P043 entry
+6. Update `state.json` P001 entry
 
 **Result:** Summary saved, CLAUDE.md updated with session entry, recap email sent to client, state.json updated.
 
@@ -334,10 +334,10 @@ Full post-meeting workflow combining multiple features. Use when asked to "proce
 
 ### Example 4: Create a meeting
 
-**User says:** "Create a Zoom meeting with Sabino tomorrow at 10am for 90 minutes"
+**User says:** "Create a Zoom meeting with Acme Client tomorrow at 10am for 90 minutes"
 
 **Actions:**
-1. Parse: topic="Sabino Session 3", date=tomorrow 10:00, duration=90, timezone=Europe/Dublin
+1. Parse: topic="Acme Client Session 3", date=tomorrow 10:00, duration=90, timezone=Europe/Dublin
 2. `zoom_create_meeting` with parameters
 3. Return join URL and meeting details
 
@@ -382,7 +382,6 @@ Full post-meeting workflow combining multiple features. Use when asked to "proce
 
 ## Additional Resources
 
-- Zoom MCP server source: [MCP Servers/P067-Zoom/](../../../MCP Servers/P067-Zoom/)
+- Requires a Zoom MCP server to be installed and configured separately — this plugin does not bundle one. See the README for prerequisites.
 - For local VTT processing: [processing-session-transcripts](../processing-session-transcripts/SKILL.md)
-- For Kit contact sync: [syncing-event-contacts](../syncing-event-contacts/SKILL.md)
 - For Zoom API reference: [references/zoom-api-reference.md](references/zoom-api-reference.md)
