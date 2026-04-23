@@ -25,7 +25,7 @@ Cowork Business OS is the publicly available, free, MIT-licensed derivative of *
 
 ## Repository structure
 
-Two structures are relevant. The first is this repository — the marketplace that holds the four plugins and the workflow that builds them. The second is the **workspace template** inside the `cowork-business-os` plugin, which is what `/cowork-business-os:setup` writes onto your computer when you run it. You interact with the workspace template every day; you rarely see the marketplace repo again after download.
+Two structures are relevant. The first is this repository — the marketplace that holds the four plugins and the workflow that builds them. The second is the **workspace template** inside the `cowork-business-os` plugin, which is what `/setup` writes onto your computer when you run it. You interact with the workspace template every day; you rarely see the marketplace repo again after download.
 
 ```
 cowork-business-os/                          Marketplace root (this repo)
@@ -41,7 +41,7 @@ cowork-business-os/                          Marketplace root (this repo)
 ├── cowork-business-os/                      Plugin 1 — core content skills + scaffolder
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/
-│   │   └── setup.md                         /cowork-business-os:setup wizard
+│   │   └── setup.md                         /setup wizard
 │   ├── skills/                              10 content-production skills
 │   └── templates/
 │       └── workspace/                       Copied onto your machine by /setup
@@ -167,7 +167,7 @@ After all four are uploaded, you'll see them listed as installed plugins.
 
 1. Still in the Cowork tab, create a new task (or open an existing one — it doesn't matter which).
 2. In the message box, type a single forward slash `/`. A small menu pops up listing the commands you have available.
-3. Scroll or search until you see `cowork-business-os:setup`. Click it.
+3. Scroll or search until you see `/setup`. Hovering on it you'll see "Scaffold a Cowork Business OS Workspace". Click it.
 4. Press **Enter** to run the command.
 
 The setup wizard will ask you questions, one at a time. Answer each in plain English:
@@ -184,37 +184,34 @@ You don't need to do anything for the other three plugins. `prima-project-manage
 
 ### What to try first
 
-Pick one of these and type it as a normal message in Cowork:
-- **Start your day:** `/prima-project-management:day` (you'll also see this in the `/` picker)
+Pick one of these and type it into Cowork:
+- **Start your day:** type `/` in the message box, pick `/day` from the picker.
 - **Write something:** `write me a LinkedIn post about the difference between skills and habits`
 - **Search your history:** `what did I work on last Tuesday?` (works after you've had a few sessions)
 - **Research a topic:** `find me recent papers on social loafing in remote teams`
 
 ## Commands (what you can trigger directly)
 
-Cowork doesn't work the way Claude Code does. You don't usually type commands — you ask Claude to do things in plain English and skills fire automatically. But some operations are explicit commands, and you can run them two ways:
-
-- **In Cowork:** type `/` in the message box to open the command picker, then click the command you want. Commands appear in the picker with their plugin namespace, like `prima-project-management:day`.
-- **In Claude Code (developers only):** type the command directly, like `/day`.
+Cowork mostly works on plain English — ask Claude to do things and skills fire automatically. But some operations are explicit commands. To run one, type `/` in the Cowork message box and a picker opens listing every command you have available. Scroll or type the first few letters, then click the one you want. Hover over any command to see a short description of what it does.
 
 Commands available across all four plugins:
 
-| Plugin | Command | What it does |
+| Command | Source plugin | What it does |
 |---|---|---|
-| `cowork-business-os` | `setup` | First-time workspace wizard. Creates folders, CLAUDE.md, state files. |
-| `prima-project-management` | `day` | Morning briefing — active projects, priorities, recommended next steps. |
-| `prima-project-management` | `night` | End of session — summarise work, commit, push. |
-| `prima-project-management` | `save` | Mid-session save — capture state so you can resume later. |
-| `prima-project-management` | `resume` | Pick up exactly where you left off. |
-| `prima-project-management` | `status` | Traffic-light health report across every project. |
-| `prima-project-management` | `sync` | Quick commit and push. |
-| `prima-project-management` | `newproject` | Create a new project folder with standardised structure. |
-| `prima-project-management` | `newclient` | Create a new client folder with profile and templates. |
-| `prima-project-management` | `timeline` | Interactive Gantt-style project timeline. |
-| `prima-project-management` | `dashboard` | Visual project dashboard in your browser. |
-| `prima-scholar` | `scholar` | Start a research session — search databases, save findings. |
-| `prima-scholar` | `cite` | Look up a paper by DOI or title, return APA7 citation. |
-| `prima-scholar` | `library` | Manage your research library — import, search, browse, stats. |
+| `/setup` | `cowork-business-os` | First-time workspace wizard. Creates folders, CLAUDE.md, state files. |
+| `/day` | `prima-project-management` | Morning briefing — active projects, priorities, recommended next steps. |
+| `/night` | `prima-project-management` | End of session — summarise work, commit, push. |
+| `/save` | `prima-project-management` | Mid-session save — capture state so you can resume later. |
+| `/resume` | `prima-project-management` | Pick up exactly where you left off. |
+| `/status` | `prima-project-management` | Traffic-light health report across every project. |
+| `/sync` | `prima-project-management` | Quick commit and push. |
+| `/newproject` | `prima-project-management` | Create a new project folder with standardised structure. |
+| `/newclient` | `prima-project-management` | Create a new client folder with profile and templates. |
+| `/timeline` | `prima-project-management` | Interactive Gantt-style project timeline. |
+| `/dashboard` | `prima-project-management` | Visual project dashboard in your browser. |
+| `/scholar` | `prima-scholar` | Start a research session — search databases, save findings. |
+| `/cite` | `prima-scholar` | Look up a paper by DOI or title, return APA7 citation. |
+| `/library` | `prima-scholar` | Manage your research library — import, search, browse, stats. |
 
 **`prima-memory` has no commands.** It's always listening in the background through its MCP server. Just ask: "what did we discuss last Tuesday?", "find the conversation where we decided X", "search my history for Y". The session recall skill picks it up automatically.
 
@@ -285,7 +282,7 @@ When a new version is released, you update by replacing the plugin files. The pr
 2. Download the four `.plugin` files from the Assets section.
 3. In Cowork, go to **Customize → Browse plugins → Upload a custom plugin file** and upload each file. The upload replaces the previous version automatically.
 
-You don't need to re-run `/cowork-business-os:setup` — your workspace folder, files, and state are preserved.
+You don't need to re-run `/setup` — your workspace folder, files, and state are preserved.
 
 There's no auto-update for individual installs. You decide when to upgrade.
 
