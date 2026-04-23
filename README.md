@@ -142,8 +142,6 @@ This section tells you exactly what to click, in order. If you've never installe
    - `prima-scholar.plugin`
 4. When all four are downloaded, leave them in your Downloads folder. You'll use them in the next step.
 
-**Troubleshooting:** if your browser renames a file to something like `cowork-business-os.plugin.zip`, rename it back to `cowork-business-os.plugin` (remove the `.zip`). The file is a zip internally, but Cowork expects the `.plugin` extension. If you're not sure how to rename a file, leave it as-is and try uploading — some setups accept the `.zip` name.
-
 ### Step 2 — Open Claude and switch to Cowork
 
 1. Open the **Claude desktop app**.
@@ -290,6 +288,10 @@ When a new version is released, you update by replacing the plugin files. The pr
 You don't need to re-run `/cowork-business-os:setup` — your workspace folder, files, and state are preserved.
 
 There's no auto-update for individual installs. You decide when to upgrade.
+
+## Troubleshooting
+
+**Browser renamed the download to `.plugin.zip`.** Rename it back to `.plugin` (remove the trailing `.zip`) before uploading. The file is a zip internally, but Cowork looks for the `.plugin` extension.
 
 ## Per-plugin documentation
 
