@@ -148,14 +148,85 @@ session once you save them.
 
 Once both are saved, Cowork Business OS is ready to use. Open this workspace
 folder in Cowork and start asking Claude for help with your work.
-
-Optional next plugins:
-  - prima-project-management for /day, /night, /newproject, /status and more
-  - prima-memory for searchable session history
-  - prima-scholar for academic research workflows
 ```
 
-## Step 7 — Re-run behaviour
+## Step 7 — Install the PRIMA plugins
+
+After showing the onboarding guide summary, ask the user about the companion plugins. They are required for full functionality (project tracking, session memory, academic research). All three are part of the same marketplace as this plugin.
+
+Ask the user:
+
+```
+Three companion plugins ship alongside cowork-business-os in the same marketplace:
+
+  - prima-project-management  — project tracking (/day, /night, /status,
+                                /newproject, /newclient, /resume, /save,
+                                /sync, /timeline, /dashboard)
+  - prima-memory              — searchable session history across every Cowork
+                                conversation you've ever had
+  - prima-scholar             — academic search, citation management, research
+                                library (PubMed, arXiv, Semantic Scholar, etc.)
+
+All three are required for full Cowork Business OS functionality.
+
+Do you already have the .plugin files for these three on your machine? (yes / no)
+```
+
+Wait for the answer.
+
+### If the user says "yes"
+
+Show:
+
+```
+Install each one in Cowork Desktop:
+
+  1. Click Customize in the Cowork left sidebar.
+  2. Click Browse plugins.
+  3. Click Upload a custom plugin file.
+  4. Select prima-project-management.plugin from your Downloads folder.
+  5. Repeat steps 2–4 for prima-memory.plugin and prima-scholar.plugin.
+
+Once all three are uploaded, restart Cowork so the commands register. Open the
+/ picker and you should see /day, /status, /scholar, and others appear.
+```
+
+### If the user says "no"
+
+Show:
+
+```
+Download the three .plugin files from the latest release on GitHub:
+
+  https://github.com/larrygmaguire-hash/cowork-business-os/releases/latest
+
+In the Assets section of that page, download:
+
+  - prima-project-management.plugin
+  - prima-memory.plugin
+  - prima-scholar.plugin
+
+When all three are in your Downloads folder, install them in Cowork:
+
+  1. Click Customize in the Cowork left sidebar.
+  2. Click Browse plugins.
+  3. Click Upload a custom plugin file.
+  4. Select prima-project-management.plugin.
+  5. Repeat steps 2–4 for prima-memory.plugin and prima-scholar.plugin.
+
+Once all three are uploaded, restart Cowork so the commands register. Open the
+/ picker and you should see /day, /status, /scholar, and others appear.
+```
+
+Either way, close with:
+
+```
+You're done. Your workspace folder is set up, your Cowork preferences are
+saved, and your plugins are installed. Open the workspace folder in Cowork
+and type / in the message box to see every command available to you.
+```
+
+## Step 8 — Re-run behaviour
 
 If `/setup` is invoked on a folder that already contains a `.claude/` directory, stop and warn:
 
